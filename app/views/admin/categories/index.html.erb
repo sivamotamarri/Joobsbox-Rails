@@ -1,0 +1,62 @@
+
+
+<h1 class="dashboard-title">Categories</h1>
+<div id="tree-controls">
+  <a id="createNewNode">Create category</a>
+  <a id="renameNode">Rename category</a>
+  <a id="deleteNode">Delete category</a>
+  <a id="saveConfiguration">Save</a>
+  <div style="clear:both"></div>
+</div>
+
+<div id="categ-wrapper">
+  <ul>
+    <li id="node_root" class="open" rel="root">
+      <a class="clicked" href="#">Categories</a>
+
+      <% if !Category.root_nodes.blank? %>
+      <ul>
+        <% Category.root_nodes.each do |category|  %>
+        <li id="node_<%=category.id%>" rel="primary-categ">
+          <a href="#"><%= category.name %></a>
+          <% children = category.children %>
+          <% if !children.blank? %>
+          <ul>
+            <% children.each do |child| %>
+            <li  id="node_<%= child.id %>" rel="secondary-categ">
+              <a href="#"><%= child.name %></a>
+            </li>
+            <% end %>
+          </ul>
+          <% end %>
+        </li>
+        <% end %>       
+      </ul>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div id="instructions">
+  <h2>Instructions</h2>
+  <p>
+		To reorder categories, simply drag and drop them.<br/>
+			To create a new category, select the parent category and then click "Create category".<br/>
+			To rename a category, select it and click "Rename category".<br/>
+    <br/>
+			Many of these options are available using right-click/secondary-click on the items.
+  </p>
+</div>
+
+<div class="dialog" id="saveDialog" title="Save successful">
+	Your category configuration has been saved.</div>
+
+<%= stylesheet_link_tag    "admin/categories/jsTree/tree_component.css", :media => "screen" %>
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+<%= stylesheet_link_tag    "admin/categories/categories.css", :media => "screen" %>
+<%= javascript_include_tag "admin/categories/jsTree/_lib.js" %>
+<%= javascript_include_tag "admin/categories/jsTree/tree_component.js" %>
+<%= javascript_include_tag "admin/categories/jquery.json-1.3.min.js" %>
+<%= javascript_include_tag "admin/categories/categories.js" %>
+<%= javascript_include_tag "js/lib/jquery-ui/js/jquery-ui-1.7.custom.min.js" %>
+

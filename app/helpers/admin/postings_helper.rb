@@ -1,0 +1,2 @@
+module Admin::PostingsHelper
+end

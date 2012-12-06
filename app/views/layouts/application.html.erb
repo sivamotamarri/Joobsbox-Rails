@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>jobs</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "joobsbox/global.css", :media => "all" %>
+  <link href="/rss" rel="alternate" type="application/rss+xml" title="jobs RSS" />
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h1 class="site-title">
+  <ul class="hmenu">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+  <a href="<%= root_url %>">jobs</a>
+</ul>
+  </h1>
+	<div id="wrapper">
+		<div id="joobsbox-main">
+			<div id="joobsbox-header">
+
+			  <h2>This is the most flexible open source job board application. <br/>Follow <a href="http://twitter.com/joobsbox">@joobsbox</a> to know when we launch next version. Check the <a href="/admin">Administration</a></h2>
+			</div>
+			<div id="tools">
+				<div id="postJob">
+					<a class="button" href="/publish">
+						Post a job for 30 days					</a>
+				</div>
+				<div id="search">
+					<form action="/search" method="get">
+						<input name="txtSearch" type="text" id="searchInput" value="Search here" />
+						<input class="button" type="submit" value="Search" />
+					</form>
+				</div>
+			</div>
+				<%= yield %>
+			<div id="joobsbox-footer">
+				Subscribe to the full <a href="/rss">RSS Feed</a> and be notified when new jobs are posted.			</div>
+			<div id="joobsbox-license">
+				powered by <a href="http://pramati.com/" rel="external" target="_blank">pramati</a> 
+			</div>
+		</div>
+	</div>
+
+ <%= javascript_include_tag "js/lib/jquery.js" %>
+	
+<script type="text/javascript" charset="UTF-8">
+    //<![CDATA[
+var translateHash={"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!":"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!"};    //]]>
+</script>
+<%= javascript_include_tag "js/functions.js" %>
+<%= javascript_include_tag "js/lib/jquery.corner.js" %>
+<%= javascript_include_tag "js/lib/jquery.pngFix.pack.js" %>
+<%= javascript_include_tag "js/global.js" %>
+<%= javascript_include_tag "joobsbox/functions.js" %>
+<script type="text/javascript">
+    var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
+    document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+  </script>
+  <script type="text/javascript">
+  UserVoice.Tab.show({
+    key: 'joobsbox',
+    host: 'joobsbox.uservoice.com',
+    forum: 'general',
+    alignment: 'left',
+    background_color:'#0069BF',
+    text_color: 'white',
+    hover_color: '#0881E4',
+    lang: 'en'
+  })
+  </script>
+
+
+</body>
+</html>
+
+

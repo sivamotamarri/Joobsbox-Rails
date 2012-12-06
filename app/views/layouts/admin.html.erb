@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Admin - Dashboard - Postings - Categories - jobs</title>
+    <%= stylesheet_link_tag    "admin/reset.css", :media => "screen" %>
+    <%= stylesheet_link_tag    "admin/global.css", :media => "screen" %>
+    <%= javascript_include_tag "js/lib/jquery.js" %>
+    <%= javascript_include_tag "admin/functions.js" %>
+
+    <script type="text/javascript" charset="UTF-8">
+      //<!--
+      var translateHash={"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!":"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!"};    //-->
+    </script>
+    <%= javascript_include_tag "js/lib/jquery.corner.js" %>
+    <%= javascript_include_tag "js/lib/jquery.pngFix.pack.js" %>
+    <%= javascript_include_tag "admin/global.js" %>
+
+  </head>
+
+  <body>
+    <div id="admin-header">
+      <a href=""> Back to site</a>
+
+      <a class="right" href="/user/logout">Logout</a>
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div id="admin-main">
+      <ul id="admin-menu">
+        <li class="item <% if params[:controller] == "admin/home" %> current <% end %> " id="menu-dashboard"><a href="/admin">Dashboard</a></li>
+        <li class="separator"></li>
+
+
+        <li class="item <% if params[:controller] == "admin/categories" %> current <% end %> ">
+          <a href="/admin/categories" style="background-image: url(/assets/admin/categories/categories_24.png);" >
+					Categories				</a>
+        </li>
+
+        <li class="item <% if params[:controller] == "admin/postings" %> current <% end %>">
+          <a href="/admin/postings" style="background-image: url(/assets/admin/postings/postings_24.png);" >
+					Postings				</a>
+        </li>
+
+        <li class="item <% if params[:controller] == "admin/themes" %> current <% end %>">
+          <a href="/admin/themes" style="background-image: url(/assets/admin/themes/themes_24.png);" >
+					Themes				</a>
+        </li>
+
+        <li class="item <% if params[:controller] == "admin/settings" %> current <% end %>">
+          <a href="/admin/settings" style="background-image: url(/assets/admin/settings/settings_24.png);" >
+					Settings				</a>
+        </li>
+
+        <li class="item <% if params[:controller] == "admin/plugins" %> current <% end %>">
+          <a href="/admin/plugins" style="background-image: url(/assets/admin/plugins/plugins_24.png);" >
+					Plugins				</a>
+        </li>
+        <li class="plugins">
+          <ul class="plugins">
+            <li class="plugin">
+              <a href="/admin/twitter" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >
+    					Twitter    				</a>
+            </li>
+            <li class="plugin">
+              <a href="/admin/google_analytics" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >
+    					Google Analytics    				</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div id="admin-content">
+        <div id="admin-content-wrap">
+          <% if false %>
+            <div id="alert">
+
+            </div>
+          <%  end %>
+
+          <%= yield %>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    <div id="joobsbox-admin-footer">
+      &copy;2013 Pramati. All rights reserved. powered by <a href="http://www.pramati.com" rel="external" target="_blank">pramati</a> 
+    </div>
+  </body>
+</html>

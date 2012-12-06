@@ -1,0 +1,100 @@
+
+
+<h1 class="dashboard-title">Plugins</h1>
+
+<div class="plugin-container">
+  <h2>Active plugins</h2>
+  <form action="/admin/plugins" method="post" id="active_form">
+    <table id="active-plugins" border="0">
+      <thead>
+        <tr>
+          <th class="check"><input id="check-all-active" type="checkbox"></th>
+          <th class="plugin">Plugin</th>
+          <th class="version">Version</th>
+          <th>Description</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input name="check[Logger]" class="active-plugin-checkbox" type="checkbox"></td>
+          <td class="plugin-name" style="background-image: url(/plugins/Logger/logger.png); ">
+            Logger                      </td>
+          <td>0.1</td>
+          <td class="description">Logger plugin lets developers log stuff through FirePHP easily.</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td><input name="check[Twitter]" class="active-plugin-checkbox" type="checkbox"></td>
+          <td class="plugin-name" style="background-image: url(/plugins/Twitter/images/twitter24.png); ">
+            <a href="/admin/twitter">Twitter</a>
+          </td>
+          <td>0.1</td>
+          <td class="description">Twitter plugin enables your Joobsbox to post new jobs on Twitter. Made by <a href="http://valentinbora.com">Valentin Bora</a></td>
+          <td>
+            <a class="settings" href="/admin/twitter">Settings</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input name="check[Hello]" class="active-plugin-checkbox" type="checkbox"></td>
+          <td class="plugin-name" style="background-image: url(/plugins/Hello/hello.png); ">
+            Hello                      </td>
+          <td>1.0</td>
+          <td class="description">Hello plugin has a crucial importance to Joobsbox. Nothing more to say.</td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td><input name="check[Google_Analytics]" class="active-plugin-checkbox" type="checkbox"></td>
+          <td class="plugin-name" style="background-image: url(/plugins/Google_Analytics/images/google_analytics_24.png); ">
+            <a href="/admin/google_analytics">Google Analytics</a>
+          </td>
+          <td>0.1</td>
+          <td class="description">Google Analytics plugin adds the Analytics tracking code to your site and displays statistics about your site</td>
+          <td>
+            <a class="settings" href="/admin/google_analytics">Settings</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tools">
+      With selected:    <a href="#" id="btnDeactivate">Deactivate</a>
+    </div>
+    <input name="form_action" value="deactivate" id="active_form_action" type="hidden">
+  </form>
+</div>
+
+<div class="plugin-container">
+  <h2>Inactive plugins</h2>
+  <form action="/admin/plugins" method="post" id="inactive_form">
+    <table id="inactive-plugins">
+      <thead>
+        <tr>
+          <th class="check"><input id="check-all-inactive" type="checkbox"></th>
+          <th class="plugin">Plugin</th>
+          <th class="version">Version</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input name="check[_iPhone]" class="inactive-plugin-checkbox" type="checkbox"></td>
+          <td class="plugin-name" style="background-image: url(/plugins/_iPhone/images/iphone_24.png); ">
+            iPhone          </td>
+          <td>0.1</td>
+          <td class="description">This is the iPhone compatibility and optimization plugin made by <a href="http://manuelciosici.com">Manuel R. Ciosici</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tools">
+      With selected:    <a href="#" id="btnActivate">Activate</a>
+      <a href="#" id="btnDelete">Delete</a>
+    </div>
+    <input name="form_action" value="activate" id="inactive_form_action" type="hidden">
+  </form>
+</div>
+
+
+
+

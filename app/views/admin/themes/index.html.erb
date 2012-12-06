@@ -1,0 +1,48 @@
+
+
+<h1 class="dashboard-title">Themes</h1>
+
+<div class="current-theme">
+  <h2>Current theme</h2>
+  <img src="/assets/admin/themes/joobsbox/screenshot.png" class="current-screenshot"/>
+
+  <div class="info">
+    <strong>Joobsbox</strong>
+  </div>
+
+  <div style="clear: both"></div>
+</div>
+
+<div class="available-themes">
+  <h2>Available themes</h2>
+  <table class="available-themes">
+    <tbody>
+      <tr>
+        <td>
+          <img src="/assets/admin/themes/default/screenshot.png" class="theme-screenshot"><br>
+          <strong>Default</strong>
+          <form action="/admin/themes" method="post">
+            <input class="activateButton" name="activate" value="Activate" type="submit">
+            <input class="deleteButton" name="delete" value="Delete" type="submit">
+            <input name="theme_name" value="default" type="hidden">
+            <input name="form_action" class="action" value="activate" type="hidden">
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+Your current admin theme is: <strong>joobsbox grey</strong>
+
+
+<%= stylesheet_link_tag    "admin/themes/themes.css", :media => "screen" %>
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+
+
+
+<%= javascript_include_tag "admin/themes/themes.js" %>
+<%= javascript_include_tag "js/lib/jquery-ui/js/jquery-ui-1.7.custom.min.js" %>
+
+

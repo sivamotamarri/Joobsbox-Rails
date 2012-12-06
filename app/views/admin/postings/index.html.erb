@@ -1,0 +1,60 @@
+
+
+<h1 class="dashboard-title">Postings</h1>
+
+<div id="approved" class="postings-container">
+  <h2>Active postings</h2>
+  <form action="/admin/postings" method="post" id="form-approved">
+    <div id="toolbar">
+		Actions:		<a id="deletePostingsApproved" class="delete">Delete selected postings</a>
+    </div>
+    <table id="approved-postings" class="postings">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Title</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Posted at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="job_2" class="job">
+          <td class="operations"><a class="expand" href="#">+</a><a href="/admin/postings/edit/2" class="editBtn"></a></td>
+          <td><input name="job[2]" type="checkbox"></td>
+          <td>CSS</td>
+          <td>pramati</td>
+          <td>hyderabad</td>
+          <td>2012-12-04 15:05:09</td>
+        </tr>
+        <tr class="next">
+          <td colspan="6">test strsdfsdfsdf test</td>
+        </tr>
+        <tr id="job_1" class="job">
+          <td class="operations"><a class="expand" href="#">+</a><a href="/admin/postings/edit/1" class="editBtn"></a></td>
+          <td><input name="job[1]" type="checkbox"></td>
+          <td>Ruby on Rails</td>
+          <td>pramati</td>
+          <td>london</td>
+          <td>2012-12-04 12:06:42</td>
+        </tr>
+        <tr class="next">
+          <td colspan="6">Brief Job Description \r\nThe successful candidate will be responsible for the full time search engine optimisation success of our distinctly branded website. The SEO Strategist will be responsible for creating and implementing fundamentally sound SEO campaigns conducting and delegating tasks accordingly. This will be a hands on position that will have access to between two and three additional support staff who will be capable of performing content development and linking tasks as well as technical development and creative assets. \r\n\r\nCandidate Requirement and Qualifications \r\n• A minimum of a (2:1) Undergraduate degree, IT based qualifications (SEO, software, computer; \r\nengineering) or Post Graduate qualifications a distinct advantage; \r\n• Poses the ability to prioritise tasks and take action on the most important ones; \r\n• Impeccable time management and organisational skills; \r\n• Deadline-oriented; \r\n• Must be able to work using his/ her own initiative; \r\n• Strong critical thinking skills and problem solving abilities; \r\n• Excellent oral and written English communication skills; \r\n• Ability to smoothly go from working independently to working with others; \r\n• An understanding of project management - able to drive a concept from idea to completion; \r\n• Must be enthusiastic, hard-working and pay attention to detail; \r\n• Experience in working with clients and being involved in pitches an advantage; \r\n• Ability to delegate; \r\n• Willingness to work long term with the determination and passion for self development. \r\n\r\nAdditional skills and requirements \r\n• A minimum of 2-3 years of full-time SEO experience working for an e-commerce company; \r\n• A proven track record for increasing SEO traffic (examples and references will be requested). \r\n\r\nRole Requirements \r\n• SEO optimisation of the companies e-commerce properties; \r\n• Advanced understanding of how websites work and how technology can impact SEO; \r\n• Knowledge of all types of SEO methods as well as best practices; \r\n• Solid experience in on-page and off-page SEO with demonstrable results in the SERPs; \r\n• Working with the Editorial team in UK on content development to support SEO; \r\n• Pay Per Click management; \r\n• Link building; \r\n• Keyword research; \r\n• Competitive analysis; \r\n• Monitoring of search engine ranking and using the data to make actionable decisions; \r\n• Monitoring SEO traffic changes (day over day, week over week, and year over year); \r\n• Keeping up to date on the latest SEO trends and changes; \r\n• Other ad-hoc tasks. \r\n\r\nRewards and Benefits \r\nThe benefits offered to a perspective candidate for this position will be based on candidate’s experience and qualifications. We aim to invest considerable resources into staff development and training to ensure that our team members are amongst the best in the industry. We offer generous project based bonuses, as well as potential company shares for exceptional standard of work and commitment. \r\n\r\nCandidates must provide the following information: \r\n• Full Candidate CV; \r\n• 2 Professional References including 1 from a previous organisation/person the candidate has worked with on a search marketing-related project; \r\n• A short case study of at least one SEO campaign the candidate has worked on with specific results achieved; \r\n• URLs to at least two search terms in Google for which the candidate has managed to gain high search rankings for. Ensure the sites in which SEO was conducted are included; \r\n• An original written sample, 300 words long (subject completely unimportant); this is just to judge the candidate’s standard of English; \r\n• A covering letter explaining the reasons why the candidate should be chosen to take the position; \r\n• Also please include your username on any relevant search/ webmaster/ affiliate marketing forums. \r\n\r\nApplications without the required information will not be considered.', 'Trimite CV la e</td>
+        </tr>
+      </tbody>
+    </table>
+    <input id="actionApproved" name="action" value="delete" type="hidden"/>
+  </form>
+</div>
+
+
+<%= stylesheet_link_tag    "admin/postings/postings.css", :media => "screen" %>
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+
+
+<%= javascript_include_tag "admin/postings/jquery.json-1.3.min.js" %>
+<%= javascript_include_tag "admin/postings/postings.js" %>
+<%= javascript_include_tag "js/lib/jquery-ui/js/jquery-ui-1.7.custom.min.js" %>
+
+
