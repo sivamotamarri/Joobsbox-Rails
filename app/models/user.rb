@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
   after_create :role_to_user
 
-
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
 
   
   

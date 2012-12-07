@@ -24,15 +24,9 @@
       <a href=""> Back to site</a>
 
       <a class="right" href="/user/logout">Logout</a>
-      <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-            <a class="close" data-dismiss="alert">&#215;</a>
-            <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          </div>
-        <% end %>
-      <% end %>
+     
     </div>
+     
 
     <div id="admin-main">
       <ul id="admin-menu">
@@ -80,11 +74,14 @@
 
       <div id="admin-content">
         <div id="admin-content-wrap">
-          <% if false %>
-            <div id="alert">
-
-            </div>
-          <%  end %>
+        <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+      <% end %>
 
           <%= yield %>
         </div>

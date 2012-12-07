@@ -2,14 +2,19 @@ JoobsboxRails::Application.routes.draw do
 
 
 
-  devise_for :users
+ 
 
-  get "categories/index"
+  devise_for :users
 
   namespace :admin do  
     match '' => 'home#index'
     resources :categories, :postings, :settings , :themes , :plugins
   end
+
+
+  match 'publish' => 'jobs#new'
+  resources :jobs
+
 
   
 

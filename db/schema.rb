@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206071551) do
+ActiveRecord::Schema.define(:version => 20121207093001) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,25 @@ ActiveRecord::Schema.define(:version => 20121206071551) do
     t.integer  "depth"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "company"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.string   "to_apply"
+    t.string   "location"
+    t.integer  "updated_by"
+    t.datetime "expiration_date"
+    t.datetime "code_stamp"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "slug"
+    t.boolean  "is_approved",     :default => false
+    t.boolean  "status",          :default => false
   end
 
   create_table "roles", :force => true do |t|
@@ -35,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20121206071551) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "settings", :force => true do |t|
+    t.integer  "jobs_per_cat",       :default => 10
+    t.string   "site_title",         :default => "Joobsbox"
+    t.integer  "job_expr_date_days", :default => 30
+    t.string   "timezone",           :default => ""
+    t.integer  "rss_in_gen",         :default => 15
+    t.integer  "rss_per_cat",        :default => 15
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -50,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20121206071551) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

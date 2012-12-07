@@ -5,6 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Role.delete_all
+User.delete_all
+Setting.delete_all
+
 puts 'CREATING ROLES'
 Role.create([
   { :name => 'admin' },
@@ -18,3 +23,7 @@ user2 = User.create! :name => 'Secondary Admin', :email => 'secondry_admin@joobs
 puts 'New user created: ' << user2.name
 user.add_role :admin
 user2.add_role :employer
+
+Setting.create(:jobs_per_cat =>10, :site_title => "Joobsbox" ,
+            :job_expr_date_days =>  30 , :timezone  => 'Central Time (US & Canada)' ,
+            :rss_in_gen => 15 , :rss_per_cat =>  15)

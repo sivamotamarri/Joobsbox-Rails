@@ -36,6 +36,15 @@
 					</form>
 				</div>
 			</div>
+
+                  <% flash.each do |name, msg| %>
+                    <% if msg.is_a?(String) %>
+                      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                        <a class="close" data-dismiss="alert">&#215;</a>
+                        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                      </div>
+                    <% end %>
+                  <% end %>
 				<%= yield %>
 			<div id="joobsbox-footer">
 				Subscribe to the full <a href="/rss">RSS Feed</a> and be notified when new jobs are posted.			</div>

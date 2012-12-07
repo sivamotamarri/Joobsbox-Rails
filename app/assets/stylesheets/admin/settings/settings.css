@@ -11,7 +11,7 @@
 
 /* Dashboard */
 h1.dashboard-title {
-  background-image: url('../images/icons/settings_48.png');
+  background-image: url('icons/settings_48.png');
 }
 
 tr.next	{
@@ -26,7 +26,7 @@ a.expand {
   display: block;
   padding: 5px 23px;
 
-  background-image: url('../images/settings_18.png');
+  background-image: url('settings_18.png');
   background-repeat: no-repeat;
   background-position: left center;
   
@@ -52,3 +52,9 @@ dd input {
   margin: 5px;
   width: 30%;
 }
+
+#formPublish .lab					{margin-top: 10px;}
+#formPublish .fields				{ margin: 0; margin-top: 5px; display: block;}
+#formPublish label				{font-family: Verdana,Arial,Helvetica,sans-serif; letter-spacing: 0.1px; font-size: 10pt;}
+
+#formPublish .input 				{margin-top: 10px;}

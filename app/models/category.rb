@@ -1,12 +1,15 @@
 class Category < ActiveRecord::Base
   
   
-
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+  
   acts_as_tree :order => "name"
   
   attr_accessible :name, :link , :order_index , :parent_id
 
   scope :root_nodes, where(:parent_id => 0)
+
 
 end
 

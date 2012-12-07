@@ -37,6 +37,9 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.3"
 
 
+gem "friendly_id", "~> 4.0.1"
+
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
