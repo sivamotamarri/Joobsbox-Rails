@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-
+  
   before_filter :authenticate_user!
   
   def index
@@ -14,6 +14,24 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'The job has been saved. It now has to be accepted by a moderator in order to appear publicly on the site.' }
+        format.json { render json: @job, status: :created, location: @job }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @job = Job.find(params[:id])    
+    respond_to do |format|
+      if @job.update_attributes(params[:job])
+        puts @job.inspect 
+        format.html { redirect_to @job, notice: 'The job has been Updated.' }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render action: "new" }

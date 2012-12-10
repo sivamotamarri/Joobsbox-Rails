@@ -17,13 +17,30 @@
 
 
     <%= f.input :to_apply,:label => "Means of application" ,:hint =>"Ex: &quot;Send CV to email ...&quot; or &quot;Apply online at URL ...&quot;", :input_html => {:class => "fields"}, :label_html => { :class => 'text-fields' } , :required => true %>
-    
+    <% if  current_user.has_role?(:admin) %>
+     <%= f.input :expiration_date ,:as => :string,:input_html => {:class => "fields"} , :label => "Expiration date" , :required => true %>
+    <% end %>
   </div>
 <dd id="submit-element">
     <%= f.button :submit, "Update" %>
 </dd>
 </dl>
 <% end %>
+
+<% if  current_user.has_role?(:admin) %>
+ 
+    <script type="text/javascript">
+      $(function(){
+
+        $("#job_expiration_date").datepicker({
+          dateFormat: "yy-mm-dd"
+
+        });
+      })
+
+      </script>
+<% end %>
+
 
 
 

@@ -1,32 +1,23 @@
 <div class="list">
+
+  <% Category.all.each do |cat| %>
+  <% if cat.approved_jobs.count > 0 %>
   <div class="inner">
     <div class="toRight">
-      <a href="/rss/category/Programare/">RSS</a>
-      <a href="/rss/category/Programare/"><%= image_tag("joobsbox/icon-rss.gif" , :alt => "RSS") %></a>
+      <a href="/rss/category/<%=cat.name%>/">RSS</a>
+      <a href="/rss/category/<%=cat.name%>/"><%= image_tag("joobsbox/icon-rss.gif" , :alt => "RSS") %></a>
     </div>
-    <a href="/category/Programare.html">
-				Programare			</a>
+    <a href="/category/<%=cat.name%>.html"><%=cat.name%></a>
   </div>
   <ul>
+    <% cat.approved_jobs.each do |job|%>
     <li >
-      <a href="/job/Ruby-on-Rails-1.html">Ruby on Rails</a>
-      <span class="lighterSmall"> at </span>
-					pramati					<span class="lighterSmall"> in </span>
-					london				</li>
+      <a href="<%=job_path(job)%>"><%= job.title %></a>
+      <span class="lighterSmall"> at </span><%= job.company %>
+      <span class="lighterSmall"> in </span><%= job.location %>
+    </li>
+    <% end %>
   </ul>
-  <div class="inner">
-    <div class="toRight">
-      <a href="/rss/category/Design/">RSS</a>
-      <a href="/rss/category/Design/"><%= image_tag("joobsbox/icon-rss.gif" , :alt => "RSS") %></a>
-    </div>
-    <a href="/category/Design.html">
-				Design			</a>
-  </div>
-  <ul>
-    <li >
-      <a href="/job/CSS-2.html">CSS</a>
-      <span class="lighterSmall"> at </span>
-					pramati					<span class="lighterSmall"> in </span>
-					hyderabad				</li>
-  </ul>
+  <% end %>
+  <% end %>  
 </div>

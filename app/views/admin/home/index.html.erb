@@ -6,7 +6,7 @@
     <div class="dashboard-item-content">
       <ul class="categories">
         <% Category.all.each do |cat| %>
-          <li><%= cat.name %> (<%="0"%>)</li>
+          <li><%= cat.name %> (<%= cat.jobs.count %>)</li>
         <% end %>        
       </ul>
     </div>
@@ -15,10 +15,16 @@
     <div class="dashboard-item-title"><a href="/admin/postings">Postings</a></div>
     <div class="dashboard-item-content">
       <ul class="postings">
+        <% Job.pending_postings.each do |job| %>
+        <li>
+          <%=link_to job.title , job_path(job) %><span class="lighterSmall"> at </span>
+          <%= job.company %><span class="lighterSmall"> in </span> <%= job.location %>
+        </li>
+        <% end %>
       </ul>
       <div class="info">
-        <span class="info-item">Total postings: 2</span>
-        <span class="info-item">Pending postings: 0</span>
+        <span class="info-item">Total postings: <%= Job.total_postings.count %></span>
+        <span class="info-item">Pending postings:  <%= Job.pending_postings.count %> </span>
       </div>
     </div>
   </li>

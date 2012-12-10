@@ -1,3 +1,4 @@
 $(function() {
-	$("#expirationDate").datepicker({minDate: -0});
+      
+	$("#expiration_date").datepicker();
 });

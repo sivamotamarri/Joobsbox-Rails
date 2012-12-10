@@ -7,7 +7,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "joobsbox/global.css", :media => "all" %>
   <link href="/rss" rel="alternate" type="application/rss+xml" title="jobs RSS" />
-  <%= javascript_include_tag "application" %>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,7 +25,7 @@
 		<div id="joobsbox-main">
 			<div id="joobsbox-header">
 
-			  <h2>This is the most flexible open source job board application. <br/>Follow <a href="http://twitter.com/joobsbox">@joobsbox</a> to know when we launch next version. Check the <a href="/admin">Administration</a></h2>
+			  <h2>This is the most flexible open source job board application. <br/>Follow <a href="http://twitter.com/joobsbox">@joobsbox</a> to know when we launch next version. <% if (user_signed_in? && current_user.has_role?(:admin)) || !user_signed_in? %> Check the <a href="/admin">Administration</a> <% end %></h2>
 			</div>
 			<div id="tools">
 				<div id="postJob">
@@ -37,14 +40,7 @@
 				</div>
 			</div>
 
-                  <% flash.each do |name, msg| %>
-                    <% if msg.is_a?(String) %>
-                      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-                        <a class="close" data-dismiss="alert">&#215;</a>
-                        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-                      </div>
-                    <% end %>
-                  <% end %>
+                   <%= render("shared/flashes") %>
 				<%= yield %>
 			<div id="joobsbox-footer">
 				Subscribe to the full <a href="/rss">RSS Feed</a> and be notified when new jobs are posted.			</div>
@@ -54,7 +50,7 @@
 		</div>
 	</div>
 
- <%= javascript_include_tag "js/lib/jquery.js" %>
+ <%#= javascript_include_tag "jquery.js" %>
 	
 <script type="text/javascript" charset="UTF-8">
     //<![CDATA[

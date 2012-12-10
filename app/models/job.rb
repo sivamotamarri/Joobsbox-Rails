@@ -1,10 +1,19 @@
 class Job < ActiveRecord::Base
+
+  belongs_to :category
+  
   attr_accessible :title,:description,:company,:category_id ,:user_id,:to_apply,:location ,
                   :is_approved ,:updated_by,:expiration_date , :status , :code_stamp
 
 
   extend FriendlyId
   friendly_id :title, :use => :slugged
+
+
+   scope :total_postings, where(:is_approved => true)
+   scope :pending_postings, where(:is_approved => false)
+
+
 end
 
 #

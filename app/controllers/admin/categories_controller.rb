@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :authenticate_user!
+  
   layout 'admin'
   require 'json'
 

@@ -28,14 +28,20 @@ $(function() {
 		}
 	});
 
+
+              
+   
+
 	// Action buttons
 	$("#deletePostingsPending").click(function(ev) {
-		$("#actionPending").attr("value", "delete");
+		$("#actionPending").attr("value", "delete");            
+               
 		$.ajax({
 			type: "POST",
-			url: window.location.href,
+			url: window.location.href + '?actionPending='+$("#actionPending").val(),
 			data: $("#form-pending").serialize(),
 			success: function(msg){
+                                $("#operationDialog").html(msg);
 				$("#pending-postings tbody tr.selected").each(function() {
 					$(this).fadeOut("slow", function(el) {
 						$(this).remove();
@@ -50,9 +56,10 @@ $(function() {
 		$("#actionPending").attr("value", "accept");
 		$.ajax({
 			type: "POST",
-			url: window.location.href,
+			url: window.location.href + '?actionPending='+$("#actionPending").val(),
 			data: $("#form-pending").serialize(),
 			success: function(msg){
+                                $("#operationDialog").html(msg);
 				$("#pending-postings tbody tr.selected").each(function() {
 					$(this).fadeOut("slow", function(el) {
 						$(this).next('tr.next').prependTo("#approved-postings tbody");
@@ -71,9 +78,10 @@ $(function() {
 		$("#actionPending").attr("value", "delete");
 		$.ajax({
 			type: "POST",
-			url: window.location.href,
+			url: window.location.href + '?actionPending='+$("#actionPending").val(),
 			data: $("#form-approved").serialize(),
 			success: function(msg){
+                                $("#operationDialog").html(msg);
 				$("#approved-postings tbody tr.selected").each(function() {
 					$(this).fadeOut("slow", function(el) {
 						$(this).next('tr.next').remove();
@@ -107,6 +115,8 @@ function checkPending() {
 	  $("#pending").remove();
 	}
 }
+
+
 
 function restoreEvents() {
   $('input[type="checkbox"]').attr("checked", false);

@@ -1,5 +1,8 @@
 class Category < ActiveRecord::Base
-  
+
+  has_many :jobs
+
+  has_many  :approved_jobs, :class_name => 'Job', :conditions => ['is_approved = ?', true]
   
   extend FriendlyId
   friendly_id :name, :use => :slugged
