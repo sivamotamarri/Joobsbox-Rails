@@ -5,6 +5,7 @@ class Job < ActiveRecord::Base
   attr_accessible :title,:description,:company,:category_id ,:user_id,:to_apply,:location ,
                   :is_approved ,:updated_by,:expiration_date , :status , :code_stamp
 
+  validates :title,:description,:company,:category_id ,:user_id,:to_apply,:location , :presence => true
 
   extend FriendlyId
   friendly_id :title, :use => :slugged
@@ -12,6 +13,13 @@ class Job < ActiveRecord::Base
 
    scope :total_postings, where(:is_approved => true)
    scope :pending_postings, where(:is_approved => false)
+
+  before_create :cal_expiration_date
+
+
+  def cal_expiration_date
+    self.expiration_date = Time.now + (Setting.first.job_expr_date_days || 30).days
+  end
 
 
 end

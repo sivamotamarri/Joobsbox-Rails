@@ -3,6 +3,10 @@ class JobsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @jobs = Job.all(:limit => Setting.first.rss_in_gen || 10)
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
   end
 
   def new
@@ -29,8 +33,7 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])    
     respond_to do |format|
-      if @job.update_attributes(params[:job])
-        puts @job.inspect 
+      if @job.update_attributes(params[:job])        
         format.html { redirect_to @job, notice: 'The job has been Updated.' }
         format.json { render json: @job, status: :created, location: @job }
       else
@@ -42,6 +45,10 @@ class JobsController < ApplicationController
 
 
   def show
-    @job = Job.find(params[:id]) 
+    @job = Job.find(params[:id])
+    respond_to do |format|
+      format.html {}
+      format.rss { render :layout => false }
+    end
   end
 end

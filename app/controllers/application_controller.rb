@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
+  before_filter :load_theme
+
   protected
 
+  def load_theme    
+    session[:theme] = Theme.current_theme.first.name  
+  end
   def layout_by_resource
     if devise_controller?
       "devise_layout"

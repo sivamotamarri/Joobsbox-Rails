@@ -3,7 +3,7 @@ class Setting < ActiveRecord::Base
                    :timezone ,:rss_in_gen , :rss_per_cat
 
   
-
+   validates :job_expr_date_days , :jobs_per_cat ,:rss_in_gen , :rss_per_cat , :numericality => { :only_integer => true }
 
 
   def self.time_zones

@@ -3,14 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<title>jobs</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "joobsbox/global.css", :media => "all" %>
-  <link href="/rss" rel="alternate" type="application/rss+xml" title="jobs RSS" />
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-
+<title><%= content_for?(:title) ? yield(:title) : (Setting.first.site_title || "Joobsbox-Rails") %></title>
+  <%= stylesheet_link_tag    "#{session[:theme]}/global.css", :media => "all" %>
+  
+  <%= auto_discovery_link_tag(:rss, "#{jobs_url}") %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,6 +19,8 @@
   <%= render 'devise/menu/login_items' %>
   <a href="<%= root_url %>">jobs</a>
 </ul>
+
+ 
   </h1>
 	<div id="wrapper">
 		<div id="joobsbox-main">
@@ -43,14 +44,16 @@
                    <%= render("shared/flashes") %>
 				<%= yield %>
 			<div id="joobsbox-footer">
-				Subscribe to the full <a href="/rss">RSS Feed</a> and be notified when new jobs are posted.			</div>
+				Subscribe to the full <%= link_to "RSS Feed", jobs_url(:format => "rss") %>
+
+and be notified when new jobs are posted.			</div>
 			<div id="joobsbox-license">
 				powered by <a href="http://pramati.com/" rel="external" target="_blank">pramati</a> 
 			</div>
 		</div>
 	</div>
 
- <%#= javascript_include_tag "jquery.js" %>
+
 	
 <script type="text/javascript" charset="UTF-8">
     //<![CDATA[
@@ -77,8 +80,6 @@ var translateHash={"Search doesn't work because Joobsbox\/SearchIndexes doesn't 
     lang: 'en'
   })
   </script>
-
-
 </body>
 </html>
 

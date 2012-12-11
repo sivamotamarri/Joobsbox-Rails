@@ -1,0 +1,22 @@
+<% cat = @category %>
+
+  <% if cat.approved_jobs.count > 0 %>
+  <div class="inner">
+    <div class="toRight">
+      <%= link_to "RSS", category_path(cat,:format => "rss") %>
+      <%= link_to image_tag("joobsbox/icon-rss.gif" , :alt => "RSS"), category_path(cat,:format => "rss") %>
+      
+    </div>
+    <a href="<%=  category_path(cat) %>"><%=cat.name%></a>
+  </div>
+  <ul>
+    <% cat.approved_jobs.each_with_index do |job , i |%>
+    <li <% if i%2 == 0 %> class="alternate"<% end%>  >
+      <a href="<%=job_path(job)%>"><%= job.title %></a>
+      <span class="lighterSmall"> at </span><%= job.company %>
+      <span class="lighterSmall"> in </span><%= job.location %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+

@@ -1,13 +1,15 @@
-
+<% theme = Theme.current_theme.first %>
 
 <h1 class="dashboard-title">Themes</h1>
 
 <div class="current-theme">
   <h2>Current theme</h2>
-  <img src="/assets/admin/themes/joobsbox/screenshot.png" class="current-screenshot"/>
+ 
+
+  <%= image_tag(theme.template_screen_shot , :class => "current-screenshot") %>
 
   <div class="info">
-    <strong>Joobsbox</strong>
+    <strong><%= theme.name %></strong>
   </div>
 
   <div style="clear: both"></div>
@@ -17,24 +19,26 @@
   <h2>Available themes</h2>
   <table class="available-themes">
     <tbody>
+      <% Theme.available_themes.each  do |theme|%>
       <tr>
         <td>
-          <img src="/assets/admin/themes/default/screenshot.png" class="theme-screenshot"><br>
-          <strong>Default</strong>
-          <form action="/admin/themes" method="post">
-            <input class="activateButton" name="activate" value="Activate" type="submit">
-            <input class="deleteButton" name="delete" value="Delete" type="submit">
-            <input name="theme_name" value="default" type="hidden">
-            <input name="form_action" class="action" value="activate" type="hidden">
-          </form>
+          <%= image_tag(theme.template_screen_shot , :class => "theme-screenshot") %>
+         <br/>
+          <strong><%= theme.name %></strong>
+          <%= form_for "theme", :url => admin_theme_path(theme) , :html => { :method => "put"} do |f| %>
+            <input class="activateButton" name="activate" value="Activate" type="submit"/>
+            <!--<input class="deleteButton" name="delete" value="Delete" type="submit"> -->
+           
+         <% end %>
         </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
 
 
-Your current admin theme is: <strong>joobsbox grey</strong>
+Your current admin theme is: <strong><%= theme.name %></strong>
 
 
 <%= stylesheet_link_tag    "admin/themes/themes.css", :media => "screen" %>

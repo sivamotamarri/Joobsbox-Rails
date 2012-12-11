@@ -19,9 +19,9 @@ class Admin::SettingsController < ApplicationController
       else
         if !@setting.errors[:base].empty?
           flash.now[:error] = @setting.errors[:base].first
-          format.html { render :action => "new" }
+          format.html { render :action => "index" }
         else
-          format.html { render :action => "new"}
+          format.html { render :action => "index"}
         end
       end
     end

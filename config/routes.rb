@@ -14,6 +14,7 @@ JoobsboxRails::Application.routes.draw do
 
   match 'publish' => 'jobs#new'
   resources :jobs
+  resources :categories
 
 
   

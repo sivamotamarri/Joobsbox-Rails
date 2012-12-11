@@ -357,3 +357,12 @@ li.plugin {
     filter: alpha(opacity=40);
     cursor: pointer;
 }
+
+.error {
+  color: red;
+  float: left;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  text-align: left;
+  width: 100%;
+}

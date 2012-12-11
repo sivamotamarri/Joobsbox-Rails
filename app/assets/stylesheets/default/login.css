@@ -1,6 +1,3 @@
-
-
-
 #wrapper {
   padding-top: 123px;
   background-image: url('logo.png');
@@ -63,6 +60,7 @@ ul.errors {
 }
 
 
+
 /* By programmer */
 
 .simple_form{
@@ -73,7 +71,7 @@ ul.errors {
   background-color: #CCC;
   text-align: center;
   margin-bottom: 15px;
-  
+
 }
 
 .simple_form  .text-fields {
@@ -105,7 +103,7 @@ ul.errors {
     text-align: left;
     width: 302px;
 }
-.error_notification{  
+.error_notification{
   padding-bottom: 5px;
 }
 .simple_form select{

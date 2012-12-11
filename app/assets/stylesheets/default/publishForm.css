@@ -3,7 +3,7 @@
 #formPublish dt					{margin-top: 10px;}
 #formPublish dd					{padding: 0; margin: 0; margin-top: 5px; display: block;}
 #formPublish dt label				{font-family: Verdana,Arial,Helvetica,sans-serif; letter-spacing: 0.1px; font-size: 10pt;}
-#formPublish .description , #formPublish .hint 		{color: #999; font-size: 11px; padding: 2px;}
+#formPublish .description, #formPublish .hint 	{color: #999; font-size: 11px; padding: 2px;}
 
 #formPublish ul.errors			{list-style: none; margin: 2px; padding: 2px;}
 #formPublish ul.errors li			{color: #FF3030; font-size: 80%;}
@@ -12,7 +12,6 @@ div.message						{padding: 0px 10px;}
 
 div.outer						{width: 100%;}
 
-
 /* By programmer */
 
 #formPublish .lab					{margin-top: 10px;}
@@ -20,5 +19,6 @@ div.outer						{width: 100%;}
 #formPublish label				{font-family: Verdana,Arial,Helvetica,sans-serif; letter-spacing: 0.1px; font-size: 10pt;}
 
 #formPublish .input 				{margin-top: 10px;}
+
 
 /* By programmer */

@@ -1,12 +1,12 @@
 body, div, h1, p, form {
-	font-family: "Lucida Grande", sans-serif;
+	font-family: helvetica, arial;
 	margin: 0 auto;
 	padding: 0;
 	line-height: 125%;
 }
 
 body {
-	background-color: #FFFFFF;
+	background: #FFFFFF url(topbluefade.gif) repeat-x scroll 0 0;
 	width: 100%;
 	text-align: center;
 	font-size: 14px;
@@ -27,24 +27,36 @@ h2 {
 	text-transform: none;
 }
 
+a:link, a:visited {
+  color: #000;
+}
+
+a:hover {
+  color: #FFF;
+  background-color: #000;
+  text-decoration: underline;
+}
+
 /************* ROUND **************************************/
 
 div.inner {
 	margin: 0;
 	border:0;
-	zoom:1;
-	background-color: #E4F2FD;
-	font-size: 20px;
+	background-color: #f7f5e7;
+	font-size: 14px;
 	color: #333333;
-	padding: 7px;
+	padding: 5px;
 	text-align: left;
 	font-weight: bold;
-	text-shadow: #888 0px 1px 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 div.outer {
 	margin: 10px;
-	padding: 2px;
-	background-color: #E5E4E4;
+	padding: 4px;
+	background-color: #f0edda;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 }
 
 /*********** LIST **********************************/
@@ -56,65 +68,80 @@ div.outer {
 	padding-right: 20px;
 }
 .list .alternate {
-	background-color: #F9F9F9;
+	background-color: #EDF3FE;
 }
-.list .inner a {
-	color: #333;
-	text-decoration: none;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
+
 .list {
 	width: 100%;
 	margin-top: 15px;
 }
+
 .list li {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding: 5px;
 	list-style-type: none;
 	border-bottom: solid 1px;
 	border-bottom-color: #EAEAEA;
 	color: #000000;
+	font-size: 14px;
 }
-a {
-	color: #21759B;
-	text-decoration: none;
+
+.list li strong {
+  font-weight: bolder;
 }
-a:hover {
-	padding-bottom: 2px;
-	padding-top: 2px;
-	text-decoration: underline;
+
+.list .category-link {
+  color: #339933;
+  text-decoration: none;
 }
+
 /*****************************************/
 
 #joobsbox-main {
 	padding: 10px;
 	width: 890px;
 	text-align: left;
-	background-color: #FFFFFF;
-        margin-top: 15px;
 }
 
 #joobsbox-header {
-	margin-bottom: 5px;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
 	clear: both;
+	border-bottom: 1px dotted #CCC;
 }
 
 .site-title	{
+  text-align: left;
+}
+
+.site-title a {
+  color: #000;
+  text-decoration: none;
+  text-align: left;
+  font-size: 28px;
+}
+
+.site-title a:hover {
+  color: #FFF;
 }
 
 #joobsbox-header h1 {
-	color:#333;
-	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size:38px;
+	color:#000;
+	font-family: helvetica;
+	font-size:28px;
 	letter-spacing:-1px;
 	padding-bottom: 0px;
 	margin-bottom: 0px;
-	text-transform: uppercase;
 	font-weight: bold;
 }
 
 #joobsbox-header h1 a {
-  color: #333;
+  color: #000;
+  text-decoration: none;
+}
+
+#joobsbox-header h1 a:hover {
+  color: #FFF;
+  background-color: #000;
 }
 
 #joobsbox-footer {
@@ -142,7 +169,6 @@ a:hover {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 10px;
-        padding-bottom: 8px;
 	height: 28px;
 	clear: both;
 }
@@ -285,8 +311,10 @@ div.info {
 
 /*============================*/
 .button {
-	-moz-border-radius:12px;
-	-webkit-border-radius:12px;
+	-moz-border-radius-bottomleft:12px;
+	-moz-border-radius-bottomright:12px;
+	-moz-border-radius-topleft:12px;
+	-moz-border-radius-topright:12px;
 	background:#21759B url(button-grad.png) repeat-x scroll left top;
 	border-color:#298CBA !important;
 	border-style: none;
@@ -325,12 +353,14 @@ div.info {
 }
 
 #joobsbox-footer {
-  background-color: #ffffcc; 
+  background-color: #FFF9D8; 
+  border-bottom: 1px solid #FFE8CD;
   text-align: center; 
-  padding: 7px 5px; 
-  border-top: 1px solid #ddd; 
-  color: #888888; 
-  font-size: 90%;
+  font-weight: bold;
+  padding: 10px 0px; 
+  border-top: 1px solid #FFE8CD;
+  color: #000; 
+  font-size: 18px;
 }
 
 

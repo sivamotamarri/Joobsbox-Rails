@@ -9,6 +9,7 @@
 Role.delete_all
 User.delete_all
 Setting.delete_all
+Theme.delete_all
 
 puts 'CREATING ROLES'
 Role.create([
@@ -27,3 +28,8 @@ user2.add_role :employer
 Setting.create(:jobs_per_cat =>10, :site_title => "Joobsbox" ,
             :job_expr_date_days =>  30 , :timezone  => 'Central Time (US & Canada)' ,
             :rss_in_gen => 15 , :rss_per_cat =>  15)
+          
+puts 'creating default themes'
+
+Theme.create(:name => "joobsbox" , :template_screen_shot => "/assets/admin/themes/joobsbox/screenshot.png" , :is_active => true)
+Theme.create(:name => "default" , :template_screen_shot => "/assets/admin/themes/default/screenshot.png")
