@@ -54,22 +54,26 @@
 					Settings				</a>
         </li>
 
-        <li class="item <% if params[:controller] == "admin/plugins" %> current <% end %>">
-          <a href="/admin/plugins" style="background-image: url(/assets/admin/plugins/plugins_24.png);" >
-					Plugins				</a>
+        <li class="item <% if params[:controller] == "admin/roles" %> current <% end %>">
+          <a href="/admin/roles" style="background-image: url(/assets/admin/plugins/plugins_24.png);" >
+					Roles				</a>
         </li>
-        <li class="plugins">
-          <ul class="plugins">
-            <li class="plugin">
-              <a href="/admin/twitter" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >
-    					Twitter    				</a>
-            </li>
-            <li class="plugin">
-              <a href="/admin/google_analytics" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >
-    					Google Analytics    				</a>
-            </li>
-          </ul>
+        <li class="item <% if params[:controller] == "admin/users" %> current <% end %>">
+          <a href="/admin/users" style="background-image: url(/assets/admin/users/users_24.png);" >
+					Users				</a>
         </li>
+        <%#*<li class="plugins">%>
+          <%#*<ul class="plugins">%>
+            <%#*<li class="plugin">%>
+              <%#*<a href="/admin/twitter" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >%>
+    					<%#*Twitter    				</a>%>
+            <%#*</li>%>
+            <%#*<li class="plugin">%>
+              <%#*<a href="/admin/google_analytics" style="background-image: url(/Joobsbox/Themes/_admin/joobsbox grey/images/adminPluginNoImage.png);" >%>
+    					<%#*Google Analytics    				</a>%>
+            <%#*</li>%>
+          <%#*</ul>%>
+        <%#*</li>%>
       </ul>
 
       <div id="admin-content">

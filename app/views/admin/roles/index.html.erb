@@ -1,0 +1,37 @@
+<h1 class="dashboard-title">Roles</h1>
+<div id="pending" class="roles-container">
+  
+    <div id="toolbar">
+  		Actions: <a id="create_role" class="accept role_hook">Create Role</a>
+    </div>
+    <div class="new_role"  style="display: none;" id="role_me" >      
+    <%= render(:partial => "new_role" , :locals => {:role => @role}) %>
+    </div>
+    <div class="roles_list">
+      <%= render("roles") %>
+    </div>    
+ 
+</div>
+<div id="operationDialog">
+	The operation has finished successfully.
+</div>
+<%= stylesheet_link_tag    "admin/roles/roles.css", :media => "screen" %>
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+
+
+<%= javascript_include_tag "admin/roles/jquery.json-1.3.min.js" %>
+<%= javascript_include_tag "admin/roles/roles.js" %>
+<%= javascript_include_tag "js/lib/jquery-ui/js/jquery-ui-1.7.custom.min.js" %>
+
+
+<script type="text/javascript">
+  $(function(){
+    $('.trigger_on_error').bind("ajax:success",function(){
+        $('#operationDialog').dialog('open');
+        $("#role_me").html("<%=  escape_javascript render(:partial => 'new_role',:locals => {:role => Role.new}) %>")
+        $("#role_me").toggle();
+        $(".roles_list").html("<%=  escape_javascript render('roles') %>")
+        
+     });
+   });
+</script>

@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_theme
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, :alert => exception.message
+  end
+
   protected
 
   def load_theme    

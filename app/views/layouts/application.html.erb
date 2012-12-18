@@ -13,17 +13,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1 class="site-title">
+
+	<div id="wrapper">
+		<div id="joobsbox-main">
+                  <h1 class="site-title">
   <ul class="hmenu">
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
   <a href="<%= root_url %>">jobs</a>
 </ul>
-
- 
   </h1>
-	<div id="wrapper">
-		<div id="joobsbox-main">
 			<div id="joobsbox-header">
 
 			  <h2>This is the most flexible open source job board application. <br/>Follow <a href="http://twitter.com/joobsbox">@joobsbox</a> to know when we launch next version. <% if (user_signed_in? && current_user.has_role?(:admin)) || !user_signed_in? %> Check the <a href="/admin">Administration</a> <% end %></h2>
@@ -80,6 +79,7 @@ var translateHash={"Search doesn't work because Joobsbox\/SearchIndexes doesn't 
     lang: 'en'
   })
   </script>
+
 </body>
 </html>
 
