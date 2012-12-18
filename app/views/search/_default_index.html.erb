@@ -1,0 +1,21 @@
+<div class="inner">
+  <a href="#">Search : <%= params[:jobq] %></a>
+</div>
+<% if @jobs.total > 0 %>
+<ul>
+  <% @jobs.each_with_index do |job , i |%>
+    <li <% if i%2 == 0 %> class="alternate"<% end%>  >
+      <strong><%= job.location %> :</strong>
+      <a href="<%=job_path(job)%>"><%= job.title %></a>
+      <span class="lighterSmall"> at </span><%= job.company %>
+    </li>
+  <% end %>
+</ul>
+<% else %>
+<div class="info">Nothing to be found for your searched criteria.</div>
+<ul>
+  <li>Look for typos in the searched word(s) and, if found, correct them.</li>
+  <li>Be less specific. Try "web designer" instead of "senior web designer".</li>
+  <li>Try similar words. If "designer" doesn\'t return anything, try "design".</li>
+</ul>
+<% end %>

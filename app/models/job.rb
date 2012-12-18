@@ -16,11 +16,21 @@ class Job < ActiveRecord::Base
 
   before_create :cal_expiration_date
 
+ 
+
 
   def cal_expiration_date
     self.expiration_date = Time.now + (Setting.first.job_expr_date_days || 30).days
   end
 
+  
+
+  searchable do
+    text :title, :description , :location , :company
+    boolean :is_approved
+    time    :created_at
+    time    :expiration_date
+  end
 
 end
 

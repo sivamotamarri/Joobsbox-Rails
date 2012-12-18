@@ -6,6 +6,8 @@ class Admin::PostingsController < ApplicationController
     if params[:job]
        if params[:actionPending] == "accept"
           Job.update_all("is_approved = 1", "id in (#{params[:job].join(',')})" )
+          Job.solr_reindex
+          Sunspot.commit
        else
           Job.delete_all("id in (#{params[:job].join(',')})")
        end
