@@ -18,26 +18,22 @@
 
     <div id="wrapper">
       <%= image_tag "#{session[:theme]}/logo3.png" , :style => "float:left;padding-left: 166px;"%>
-      <div id="joobsbox-main">        
+      <div id="joobsbox-main">
         <ul class="nav nav-pills">
           <li  <% if params[:controller] != "devise/registrations" %> class ="active" <% end %>><a href="<%= root_url %>">jobs</a></li>
             <%= render 'devise/menu/registration_items' %>
             <%= render 'devise/menu/login_items' %>
           <% if (user_signed_in? && current_user.has_role?(:admin)) || !user_signed_in? %><li><a href="/admin">Administration</a></li><% end %>
         </ul>
-       
+
         <div id="joobsbox-header">
 
           <h2>This is the most flexible open source job board application.</h2>
         </div>
         <div id="tools">
           <div id="postJob">
-            <% if current_user.has_role? :jobseeker %>  
-             <a class="button" href="/post">Post a Resume</a>
-            <% else %>
-             <a class="button" href="/publish">Post a job for 30 days</a>
-            <% end %>
-
+            <a class="button" href="/post">
+						Post a Resume		</a>
           </div>
           <div id="search">
             <form action="/search" method="get">
@@ -54,7 +50,7 @@
 
           and be notified when new jobs are posted.			</div>
         <div id="joobsbox-license">
-				powered by <a href="http://pramati.com/" rel="external" target="_blank">pramati</a> 
+				powered by <a href="http://pramati.com/" rel="external" target="_blank">pramati</a>
         </div>
       </div>
     </div>

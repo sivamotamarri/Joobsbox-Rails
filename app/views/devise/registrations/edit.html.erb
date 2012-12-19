@@ -1,32 +1,37 @@
 
-<br/>
 <div>
   
+  <div class="inner">Edit <%= resource_name.to_s.humanize %></div>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :class=>"form-horizontal"}) do |f| %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 
-   <dl class="zend_form">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<br/>
-  <%= f.error_notification %>
+<%= f.error_notification %>
+   <div class="control-group" style="width:50%;">
 
-  <div class="form-inputs">
+  
     
-    <%= f.input :email, :label_html => { :class => 'text-fields' }, :required => true, :autofocus => true %>
-    <%= f.input :password, :label_html => { :class => 'text-fields' }, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-    <%= f.input :password_confirmation, :label_html => { :class => 'text-fields' }, :required => false %>
-    <%= f.input :current_password, :label_html => { :class => 'text-fields' }, :hint => "<br\>we need your current password to <br\> confirm your changes", :required => true %>
-  </div>
+    <%= f.input :email, :label_html => { :class => 'control-label' },:input_html => { :class => 'controls' }, :required => true, :autofocus => true %>
+   </div><div class="control-group" style="width:100%;">
+    <%= f.input :password, :label_html => { :class => 'control-label' },:input_html => { :class => 'controls' }, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+      </div><div class="control-group" style="width:50%;">
+    <%= f.input :password_confirmation, :label_html => { :class => 'control-label' },:input_html => { :class => 'controls' }, :required => false %>
+         </div><div class="control-group" style="width:100%;">
+    <%= f.input :current_password, :label_html => { :class => 'control-label' },:input_html => { :class => 'controls' }, :hint => "we need your current password to confirm your changes", :required => true %>
+            </div>
+
+  
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+<div class="inner">Cancel my account</div>
+<div class="control-group" style="width:90%;">
 
-<%= link_to "Back", :back %>
-   </dl>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete  , :class => "btn btn-danger"  %> <%= link_to "Back", :back , :class => "btn btn-primary" %></p>
+
+
+   </div>
 </div>

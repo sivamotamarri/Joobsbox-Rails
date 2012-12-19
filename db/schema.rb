@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211071928) do
+ActiveRecord::Schema.define(:version => 20121219103820) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,24 @@ ActiveRecord::Schema.define(:version => 20121211071928) do
     t.boolean  "is_approved",     :default => false
     t.boolean  "status",          :default => false
     t.date     "expiration_date"
+  end
+
+  create_table "resumes", :force => true do |t|
+    t.string   "nationality"
+    t.string   "current_location"
+    t.string   "mobile_number"
+    t.string   "landline"
+    t.string   "gender"
+    t.integer  "user_id"
+    t.integer  "total_experience_yrs"
+    t.integer  "total_experience_mns"
+    t.string   "current_industry"
+    t.string   "function"
+    t.string   "key_skills"
+    t.string   "resume_title"
+    t.string   "attachment"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "roles", :force => true do |t|

@@ -5,6 +5,7 @@ class Admin::CategoriesController < ApplicationController
   require 'json'
 
   def index
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
   end
 
   def create   

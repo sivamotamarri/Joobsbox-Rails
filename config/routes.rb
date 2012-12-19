@@ -13,8 +13,10 @@ JoobsboxRails::Application.routes.draw do
 
 
   match 'publish' => 'jobs#new'
+  match 'post' => 'resumes#new'
   match 'search' => 'search#index'
   resources :jobs
+  resources :resumes
   resources :categories
 
 

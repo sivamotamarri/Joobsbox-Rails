@@ -13,7 +13,7 @@
 
     <%= f.input :category_id ,:input_html => {:class => "fields"},  :collection =>  Category.all, :prompt => "Choose...",:label_html => { :class => 'text-fields' }, :required => true %>
 
-    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "24" , :cols => "80"}, :label_html => { :class => 'text-fields' }, :required => true %>
+    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "24" , :cols => "80" ,:style => "width: 591px;"}, :label_html => { :class => 'text-fields' }, :required => true %>
     
     
     <%= f.input :to_apply,:label => "Means of application" ,:hint =>"Ex: &quot;Send CV to email ...&quot; or &quot;Apply online at URL ...&quot;", :input_html => {:class => "fields"}, :label_html => { :class => 'text-fields' } , :required => true %>

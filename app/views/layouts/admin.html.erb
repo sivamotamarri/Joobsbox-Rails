@@ -8,20 +8,15 @@
     <%= stylesheet_link_tag    "admin/global.css", :media => "screen" %>
     <%= javascript_include_tag "js/lib/jquery.js" %>
     <%= javascript_include_tag "admin/functions.js" %>
-
-    <script type="text/javascript" charset="UTF-8">
-      //<!--
-      var translateHash={"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!":"Search doesn't work because Joobsbox\/SearchIndexes doesn't have write permissions. Please allow the server to write to that folder!"};    //-->
-    </script>
     <%= javascript_include_tag "js/lib/jquery.corner.js" %>
     <%= javascript_include_tag "js/lib/jquery.pngFix.pack.js" %>
     <%= javascript_include_tag "admin/global.js" %>
     <%= csrf_meta_tags %>
-
   </head>
 
   <body>
-    <div id="admin-header">
+    
+    <div id="admin-header">     
       <a href="/"> Back to site</a>
       <%= link_to('Logout', destroy_user_session_path, :method => :delete , :class => "right") %>
   
@@ -54,10 +49,10 @@
 					Settings				</a>
         </li>
 
-        <li class="item <% if params[:controller] == "admin/roles" %> current <% end %>">
+        <!--<li class="item <%# if params[:controller] == "admin/roles" %> current <%# end %>">
           <a href="/admin/roles" style="background-image: url(/assets/admin/plugins/plugins_24.png);" >
 					Roles				</a>
-        </li>
+        </li>-->
         <li class="item <% if params[:controller] == "admin/users" %> current <% end %>">
           <a href="/admin/users" style="background-image: url(/assets/admin/users/users_24.png);" >
 					Users				</a>

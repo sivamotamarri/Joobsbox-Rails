@@ -58,5 +58,14 @@ module JoobsboxRails
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    config.to_prepare do
+      Devise::SessionsController.layout "devise_layout"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise_layout" }
+      Devise::ConfirmationsController.layout "devise_layout"
+      Devise::UnlocksController.layout "devise_layout"
+      Devise::PasswordsController.layout "devise_layout"
+    end
   end
 end
