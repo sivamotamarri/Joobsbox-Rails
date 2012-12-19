@@ -15,7 +15,9 @@ puts 'CREATING ROLES'
 Role.create([
   { :name => 'admin' },
   { :name => 'jobseeker' },
-  { :name => 'employer' }
+  { :name => 'employer' },
+  { :name => 'recruiter'},
+  { :name => 'agent'}
 ], :without_protection => true)
 puts 'SETTING UP DEFAULT USER LOGIN'
 user = User.create! :name => 'Admin', :email => 'admin@joobsbox.com', :password => 'pramati123', :password_confirmation => 'pramati123'
