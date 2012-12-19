@@ -17,7 +17,7 @@
 
 
     <div id="wrapper">
-      <%= image_tag "#{session[:theme]}/logo3.png" , :style => "float:left;padding-left: 166px;"%>
+      <%= image_tag "#{session[:theme]}/rails.png" , :style => "float:left;padding-left: 166px;padding-right: 16px;"%>
       <div id="joobsbox-main">        
         <ul class="nav nav-pills">
           <li  <% if params[:controller] != "devise/registrations" %> class ="active" <% end %>><a href="<%= root_url %>">jobs</a></li>
@@ -32,7 +32,7 @@
         </div>
         <div id="tools">
           <div id="postJob">
-            <% if current_user.has_role? :jobseeker %>  
+            <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
              <a class="button" href="/post">Post a Resume</a>
             <% else %>
              <a class="button" href="/publish">Post a job for 30 days</a>

@@ -9,7 +9,7 @@ body {
   height: 80px;
   border-bottom: 2px solid #464646; 
   background-color: #333333;
-  background-image: url('logo3.png');
+  background-image: url('rails.png');
   background-repeat: no-repeat; 
   background-position: 17px 40%;
 }
@@ -17,7 +17,7 @@ body {
   font-size: 80%; 
   position: relative; 
   top: 50px; 
-  left: 330px;
+   left: 184px;
   color: #FFF;
 }
 
