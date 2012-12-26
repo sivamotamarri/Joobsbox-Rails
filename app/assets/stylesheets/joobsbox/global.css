@@ -402,6 +402,12 @@ ul li{
   list-style: none;
 }
 
-
-
+.collection_radio_buttons{
+  float: left;
+  margin-top: 5px;
+    padding-left: 5px;
+}
+.myradio{
+  margin-top: 8px !important;
+}
 /* By programmer */

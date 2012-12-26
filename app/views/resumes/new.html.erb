@@ -1,1 +1,65 @@
-Coming soon
+<%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
+<div class="inner">Post a Resume</div>
+<%= simple_form_for(@resume , :html => { :class=>"form-horizontal" , :multipart => true}) do |f| %>
+
+     <%= f.error_notification %>
+<fieldset>
+    <legend>Personal Details </legend>
+    <div class="control-group">
+    <%= f.input :nationality ,:input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :collection =>  Resume.nationalities, :prompt => "Choose...", :required => true %>
+    
+    </div><div class="control-group">
+      <%= f.input :current_location, :input_html => {:class => "controls"},:label_html => {:class => "control-label"}, :required => true , :collection => Resume.current_loactions, :prompt => "Choose..." %>
+    
+    </div><div class="control-group">
+  <%= f.input :mobile_number ,:input_html => {:class => "controls"},:label_html => {:class => "control-label"}, :required => false %>
+    </div>
+    <div class="control-group"><label class="control-label"></label><div class = "controls">Or</div></div>
+   <div class="control-group">
+  <%= f.input :landline, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => false %>
+    </div><div class="control-group">
+  <%= f.input :gender,:collection =>['Male','Female'], :as => :radio_buttons, :label_html => {:class => "control-label"},:input_html => {:class => "controls myradio"}, :required => true, :autofocus => true %>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Professional Details </legend>
+
+     <div class="control-group">
+    <label class = "control-label">Total experience</label>
+    <%= f.input :total_experience_yrs,:label => false,  :prompt => "Years",:collection => 1..50 , :required => true ,:input_html => {:style => "width:104px;float:left;margin-right:12px;" , :class => "controls" } , :error_html => { :class => 'year_error'}%>
+    <%= f.input :total_experience_mns,:label => false, :prompt => "Months", :collection => 0..11 , :input_html => {:class => "fields",:style => "width:100px;" },  :required => true , :error_html => { :class => 'month_error'} %>
+     </div> <div class="control-group">
+  <%= f.input :current_industry, :collection => Resume::INDUSTRIES , :input_html => {:class => "controls"},:label_html => {:class => "control-label"},  :required => true %>
+  </div> <div class="control-group">
+  <%= f.input :key_skills, :input_html => {:class => "controls"},:label_html => {:class => "control-label"},  :required => true %>
+  </div>
+</fieldset>
+
+  <fieldset>
+    <legend>Resume Details </legend>
+     <div class="control-group">
+    <%= f.input :resume_title, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => false %>
+  </div> <div class="control-group">
+  <%= f.input :attachment, :as => :file, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => false %>
+  </div>
+  </fieldset>
+   <div class="control-group">
+    By Clicking the submit button, you are agree to Career Hub privacy statement and terms of use
+    <%= f.input :user_id,:as => :hidden , :input_html => {:value => current_user.id} %>
+  </div>
+ <div class="control-group">
+    <%= f.button :submit, "Submit" %>
+ </div>
+
+<% end %>
+
+
+ 
+
+
+
+
+
+
+

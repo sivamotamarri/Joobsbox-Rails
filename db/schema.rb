@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219103820) do
+ActiveRecord::Schema.define(:version => 20121226070858) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20121219103820) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "slug"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.boolean  "status",     :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -44,6 +51,18 @@ ActiveRecord::Schema.define(:version => 20121219103820) do
     t.date     "expiration_date"
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "joobs_model_name"
+    t.string   "r"
+    t.string   "c"
+    t.string   "u"
+    t.string   "d"
+    t.string   "m"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "resumes", :force => true do |t|
     t.string   "nationality"
     t.string   "current_location"
@@ -58,8 +77,11 @@ ActiveRecord::Schema.define(:version => 20121219103820) do
     t.string   "key_skills"
     t.string   "resume_title"
     t.string   "attachment"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.boolean  "status",               :default => true
+    t.string   "content_type"
+    t.string   "filename"
   end
 
   create_table "roles", :force => true do |t|
@@ -112,6 +134,13 @@ ActiveRecord::Schema.define(:version => 20121219103820) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_groups", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
+  add_index "users_groups", ["user_id", "group_id"], :name => "index_users_groups_on_user_id_and_group_id"
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

@@ -1,0 +1,26 @@
+
+<h1 class="dashboard-title">Groups</h1>
+<div id="pending" class="roles-container">
+
+    <div id="toolbar">
+  		Actions: <a id="create_role" class="accept role_hook">Create Group</a>
+    </div>
+    <div class="new_role"  style="display: none;" id="role_me" >
+    <%= render(:partial => "new_group" , :locals => {:group => @group}) %>
+    </div>
+    <div class="roles_list">
+      <%= render(:partial => 'groups', :locals =>{:groups => @groups}) %>
+    </div>
+
+</div>
+<div id="operationDialog" style ="display: none;">
+	The operation has finished successfully.
+</div>
+<%= stylesheet_link_tag    "admin/groups/groups.css", :media => "screen" %>
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+
+
+<%= javascript_include_tag "admin/groups/jquery.json-1.3.min.js" %>
+<%= javascript_include_tag "admin/groups/groups.js" %>
+<%= javascript_include_tag "js/lib/jquery-ui/js/jquery-ui-1.7.custom.min.js" %>
+

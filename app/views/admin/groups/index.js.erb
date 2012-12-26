@@ -1,0 +1,5 @@
+$(".roles_list").html("<%=  escape_javascript render(:partial => 'groups', :locals =>{:groups => @groups}) %>")
+$('#operationDialog').dialog('open');
+$("#role_me").html("<%=  escape_javascript render(:partial => 'new_group',:locals => {:group => @group}) %>")
+$("#role_me").toggle();
+

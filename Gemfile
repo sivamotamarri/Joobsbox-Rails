@@ -45,6 +45,8 @@ gem "best_in_place"
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
+
+gem 'carrierwave'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

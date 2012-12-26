@@ -1,0 +1,17 @@
+<table class="roles">
+  <tbody>
+    <tr>
+      <td></td>
+      <td>Name :</td>
+      <td><%= best_in_place group, :name , :path => "/admin/groups/new_group", :type => :input , :nil => "Click me to add content!" , :ok_button => 'Save' ,:cancel_button => "Cancel" , :method => :post ,  :classes => 'trigger_on_error'  %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<script type="text/javascript" >
+  $(function(){
+      $('.best_in_place').best_in_place(); 
+
+  });
+</script>

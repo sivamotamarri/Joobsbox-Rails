@@ -1,0 +1,113 @@
+/* ======================================= */
+/* = roles admin plugin main css file = */
+/* ======================================= */
+
+.roles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333333;
+  border-top: 1px dotted #EEE;
+  width: 100%;
+}
+
+h2 {
+  margin-left: 10px;
+}
+
+.roles .ui-selecting {
+  background: #FECA40;
+}
+.roles .ui-selected {
+  background: #F39814;
+  color: white;
+}
+.roles td, .roles th {
+  padding: 8px;
+  margin-bottom: 2px;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  text-align: left;
+}
+.roles tr.noBorder td {
+  border: none;
+}
+.roles td {
+  background-color: #FFF;
+  font-size: 90%;
+}
+
+.roles thead tr {
+  color: #FFF;
+}
+.roles tbody tr:hover td	{
+  background-color: #DDE;
+}
+.roles tbody tr.selected td {
+  background-color: #FFFFE9;
+}
+
+td.operations a	{
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+
+.editBtn {
+  background-image: url('icons/edit_20.png');
+  width: 20px;
+  height: 20px;
+}
+
+.roles-container	{
+  position: relative;
+  overflow: hidden;
+}
+.roles-container #toolbar {
+  clear: both;
+  text-align: left;
+  width: 100%;
+  color: #EEE;
+  background-color: #333333;
+  background-position: left top;
+  background-repeat: repeat-x;
+  padding: 25px 5px 20px 25px;
+  border-top: 4px solid #b5b5b5;
+}
+
+.roles-container #toolbar a {
+  cursor: pointer;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 3px 50%;
+  padding: 5px 5px 2px 30px;
+  height: 22px;
+  width: 35%
+}
+.roles-container #toolbar a:hover {
+  text-decoration: underline;
+}
+.roles-container #toolbar a.accept	{
+  background-image: url('icons/add_20.png');
+}
+.roles-container #toolbar a.delete		 	{background-image: url('icons/delete_20.png');}
+
+/* Dashboard */
+h1.dashboard-title						{background-image: url('icons/groups_48.png');}
+
+tr.next									{display: none;}
+a.expand					{text-decoration: none;}
+
+/* developer css */
+.purr {
+  position: fixed;
+  top: 30px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  background-color: #FCC;
+  border: solid 2px #C66;
+  &:first-letter { text-transform: uppercase; }
+}
+/* developer css */

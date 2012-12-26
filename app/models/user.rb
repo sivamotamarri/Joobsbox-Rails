@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
   rolify
+
+  has_and_belongs_to_many :groups, :join_table => :users_groups
+
+  has_many :resumes
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -23,5 +27,8 @@ class User < ActiveRecord::Base
     self.add_role self.role_name
   end
 
+  def grouped_to?(group_name)
+    groups.where(:name => group_name).size > 0
+  end
 
 end

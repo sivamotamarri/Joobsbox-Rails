@@ -8,7 +8,14 @@ JoobsboxRails::Application.routes.draw do
 
   namespace :admin do  
     match '' => 'home#index'
-    resources :categories, :postings, :settings , :themes , :plugins , :roles , :users
+    resources :categories, :postings, :settings , :themes , :plugins , :roles , :users 
+    resources :groups do
+      member do
+        get "users"
+        post "add_users"
+        post "remove_users"
+      end
+    end
   end
 
 
