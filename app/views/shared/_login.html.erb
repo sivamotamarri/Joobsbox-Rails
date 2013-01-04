@@ -1,0 +1,24 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Sign in</h3>
+  </div>
+
+  <%= simple_form_for("user" ,:url => "#", :html  => {:class => "form-horizontal well"})  do |f| %>
+    <div class="modal-body" style="text-align: left;">
+      <div class="error alert alert-error" style="display:none;"></div>
+      <br/>
+      <%= f.input :email, :required => true, :autofocus => true %>
+      <%= f.input :password, :label_html => { :class => 'text-fields' ,:style => "margin-top:20px;" }, :required => true %>
+      <%= f.input :remember_me, :label_html => { :class => 'check_fields' , :style => "display: inline-block; margin-top: 11px; padding-left: 7px; vertical-align: middle;" } ,:input_html => { :class => 'checkfield' }, :as => :boolean   %>
+
+    </div>
+    <div class="modal-footer form-actions" style ="background:none;">
+
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+     
+      <div class="btn btn-primary" id="sign_me">Sign In</div>
+    </div>
+  <% end %>
+<%#= render "devise/shared/links" %>
+</div>

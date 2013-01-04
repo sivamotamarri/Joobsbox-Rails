@@ -5,70 +5,47 @@
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <title><%= content_for?(:title) ? yield(:title) : (Setting.first.site_title || "Joobsbox-Rails") %></title>
     <%= stylesheet_link_tag    "#{session[:theme]}/global.css", :media => "all" %>
+    <%= stylesheet_link_tag    "#{session[:theme]}/bootstrap.css", :media => "all" %>
     <%= auto_discovery_link_tag(:rss, "#{jobs_url}") %>
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <%= stylesheet_link_tag    "admin/users/bootstrap.css", :media => "screen" %>
-    <%= stylesheet_link_tag    "#{session[:theme]}/edit.css", :media => "screen" %>
+<%#= stylesheet_link_tag    "admin/users/bootstrap.css", :media => "screen" %>
+<%#= stylesheet_link_tag    "#{session[:theme]}/edit.css", :media => "screen" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-
-    <div id="wrapper">
-      <%= image_tag "#{session[:theme]}/rails.png" , :style => "float:left;padding-left: 166px;padding-right: 16px;"%>
-      <div id="joobsbox-main">        
-        <ul class="nav nav-pills">
-          <li  <% if params[:controller] != "devise/registrations" %> class ="active" <% end %>><a href="<%= root_url %>">jobs</a></li>
-            <%= render 'devise/menu/registration_items' %>
-            <%= render 'devise/menu/login_items' %>
-          <% if (user_signed_in? && current_user.has_role?(:admin)) || !user_signed_in? %><li><a href="/admin">Administration</a></li><% end %>
-        </ul>
-       
-        <div id="joobsbox-header">
-
-          <h2>This is the most flexible open source job board application.</h2>
-        </div>
-        <div id="tools">
-          <div id="postJob">
-            <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
-             <a class="button" href="/post">Post a Resume</a>
-            <% else %>
-             <a class="button" href="/publish">Post a job for 30 days</a>
-            <% end %>
-
-          </div>
-          <div id="search">
-            <form action="/search" method="get">
-              <input name="jobq" type="text" id="searchInput" value="Search here" />
-              <input class="button" type="submit" value="Search" />
-            </form>
-          </div>
-        </div>
-
-        <%= render("shared/flashes") %>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <%= render('shared/navbar_tabs') %>
+    </div>
+    <div class="container-fluid">
+      <%= render("shared/flashes") %>
+      <div class="row-fluid">
         <%= yield %>
-        <div id="joobsbox-footer">
-				Subscribe to the full <%= link_to "RSS Feed", jobs_url(:format => "rss") %>
-
-          and be notified when new jobs are posted.			</div>
-        <div id="joobsbox-license">
-				powered by <a href="http://pramati.com/" rel="external" target="_blank">pramati</a> 
+        <div class="span4">
+          <h2>Ads</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
         </div>
       </div>
+      <hr/>
+      <footer>
+        <p>Subscribe to the full <%= link_to "RSS Feed", jobs_url(:format => "rss") %> and be notified when new jobs are posted.</p>
+        <p>&copy; Pramati 2013</p>
+      </footer>
     </div>
-
-
-
-
     <%= javascript_include_tag "js/functions.js" %>
     <%= javascript_include_tag "js/lib/jquery.corner.js" %>
     <%= javascript_include_tag "js/lib/jquery.pngFix.pack.js" %>
     <%= javascript_include_tag "js/global.js" %>
     <%= javascript_include_tag "joobsbox/functions.js" %>
     <%= javascript_include_tag "admin/users/bootstrap.js" %>
-
+    <%= render('shared/login') %>
   </body>
 </html>
 

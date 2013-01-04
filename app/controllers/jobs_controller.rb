@@ -1,15 +1,17 @@
 class JobsController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! , :except => [:show, :index]
   
   def index
     @jobs = Job.all(:limit => Setting.first.rss_in_gen || 10)
     respond_to do |format|
+      format.html {}
       format.rss { render :layout => false }
     end
   end
 
   def new
+    authorize! :new, @user, :message => 'Not authorized as an employer.'
     @job = Job.new
   end
 

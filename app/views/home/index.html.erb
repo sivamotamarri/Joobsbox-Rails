@@ -1,3 +1,62 @@
-<div class="list">
-   <%= render("#{session[:theme]}_index") %>
+<div class="hero-unit">
+  <h1>Your, career!</h1>
+  <p>This is the most flexible open source job board application.</p>
+  <!--<p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p> -->
+  <p>
+      <form action="/search" method="get" class="navbar-search pull-right" style="float:none;">
+        <input name="jobq" type="text" id="searchInput" placeholder="Search for job" style="width: 444px;" class="search-query span2" />
+        <button type="submit" class="btn btn-success" style="margin-top: 0px;">Search</button>
+      </form>
+</p>
+</div>
+<!-- Main hero unit for a primary marketing message or call to action -->
+<!-- Example row of columns -->
+<div class="row-fluid">
+  <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
+  <div class="span8">
+    <h2>Post a Resume</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success" href="/post">Submit</a></p>
+  </div>
+  <div class="span4">
+    <h2>Ads</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  </div>
+  <% elsif (user_signed_in? && (current_user.has_role?(:employer) || current_user.has_role?(:admin))) %>
+  <div class="span8">
+    <h2>Post a job for 30 days</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success" href="/publish">Post</a></p>
+  </div>
+  <div class="span4">
+    <h2>Ads</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  </div>
+  <% elsif  (user_signed_in? && current_user.has_role?(:recruiter)) %>
+   <div class="span4">
+    <h2>Post a Resume</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success " href="/post">Submit</a></p>
+   </div>
+   <div class="span4">
+    <h2>Post a job for 30 days</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success " href="/publish">Post</a></p>
+  </div>
+   <div class="span4">
+    <h2>Ads</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  </div>
+  <% else %>
+   <div class="span8">
+    <h2>Post a Resume</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success " href="/post">Submit</a></p>
+  </div>
+ <div class="span4">
+    <h2>Post a job for 30 days</h2>
+    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+    <p><a class="btn btn-success " href="/publish">Post</a></p>
+  </div>
+  <% end %>
 </div>

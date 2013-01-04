@@ -1,0 +1,67 @@
+<div id="group_permissions" class="modal" style="display: none;">
+  <%= simple_form_for @permission, :url => admin_group_permission_path(@group) , :html => {:method => :put, :class => 'form-horizontal' , :onsubmit => "return validate();" } do |f| %>
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&#215;</a>
+      <h3>Create Group Permissions</h3>
+    </div>
+    <div class="modal-body">
+      <div class =  'control-group'>
+      <%=  f.input :joobs_model_name , :collection => {"Job Management" => "Job" , "Resume Management" => "Resume"}, :label => "Module",  :label_html => { :class => 'control-label' , :style => "width:62px;margin-right: 20px;" } ,  :input_html => { :class => 'controls' , :style => "margin-left:40px;" } , :required => true %>
+      <%= f.input :group_id , :as => :hidden , :input_html => {:value => @group.id} %>
+      <label class="control-label" style="width:auto;margin-right: 21px;margin-left: 15px;margin-top: 5px;">Permissions : </label>
+      <%=  f.collection_radio_buttons :m , [['manage', 'All'] ,['','Limited']] , :first , :last , :item_wrapper_class => 'radios' %>
+      <div class="perms" style ="padding-left:121px;">
+        <span class="error" style="display:none;">Select atleast one of the following permissions</span>
+         <%= render(:partial => "permissions" , :locals => {:f => f}) %>
+         <%= f.input :limited , :as => :hidden , :input_html => {:value => ""} %>
+      </div>
+        <script type="text/javascript">
+          $(function(){
+            $('#permission_m_manage').click(function(){
+              if($(this).attr("checked")) {
+                $(".perms input[type=checkbox]").attr("checked", false);
+                $('#permission_limited').val('');
+                $('.perms').hide();
+              }
+            });
+             $('#permission_m_').click(function(){               
+               if($(this).attr("checked")){
+                  $('.perms').show();
+                }
+             });
+             
+               if($('#permission_m_').attr("checked")){
+                  $('.perms').show();
+                }
+
+             $(".perms input[type=checkbox]").click(function(){
+               if($(this).attr("checked")){
+                 $('.error').hide();
+                  $('#permission_limited').val('1');
+               }
+             });
+             
+           
+          });
+
+          function validate(){
+            if($("#permission_m_manage").attr("checked")){
+              return true
+            }else{
+              if($(".perms input:checkbox:checked").length > 0){
+                return true;
+              }else{
+                $('.error').show();
+                return false;
+              }
+            }
+          }
+        </script>
+      </div>
+      </div>
+    <div class="modal-footer">
+      <%= f.submit "Create", :class => "btn" %>
+      <a class="btn" data-dismiss="modal" href="#">Close</a>
+    </div>
+  <% end %>
+</div>

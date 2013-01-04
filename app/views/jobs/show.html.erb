@@ -1,14 +1,16 @@
-<div class="inner">
-  <strong>
+<div class="span8">
+<div class="page-header">
+  <h2>
         <%= @job.title %> <span class="lighterSmall"> at </span>
 	<%= @job.company %> <span class="lighterSmall"> in </span>
         <%= @job.location %>
-  </strong>
+  </h2>
 </div>
-<div id="jobContent">
+<div id="jobContent" style="text-align: left;">
   <h2>Description:</h2>
   <%= @job.description %>
    <h2>To apply:</h2>
    <%= @job.to_apply %>
 </div>
 
+</div>

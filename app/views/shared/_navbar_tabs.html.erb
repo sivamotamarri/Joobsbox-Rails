@@ -1,0 +1,41 @@
+<div class="navbar-inner">
+  <div style="width: auto;" class="container">
+    <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <a href="#" class="brand">Hook Up Your Career!</a>
+    <div class="nav-collapse">
+      <ul class="nav">
+        <li  <% if params[:controller] == "home" %>  class="active" <% end %> ><a href="<%= root_url %>">Home</a></li>
+        <li  <% if params[:controller] == "jobs" %>  class="active" <% end %> ><a href="<%= jobs_url %>">Jobs</a></li>
+        <% if (user_signed_in? && current_user.has_role?(:admin)) %>
+         <li><a href="/admin">Administration</a></li>
+        <% elsif !user_signed_in? %>        
+         <li><a href="#myModal" data-toggle="modal">Administration</a></li>
+        <% end %>
+<%#*<li class="dropdown">%>
+<%#*<a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>%>
+<%#*<ul class="dropdown-menu">%>
+<%#*<li><a href="#">Action</a></li>%>
+<%#*<li><a href="#">Another action</a></li>%>
+<%#*<li><a href="#">Something else here</a></li>%>
+<%#*<li class="divider"></li>%>
+<%#*<li><a href="#">Separated link</a></li>%>
+<%#*</ul>%>
+<%#*</li>%>
+      </ul>
+      <form action="/search" method="get" class="navbar-search pull-left">
+        <input name="jobq" type="text" id="searchInput" placeholder="Search for job or profile"  class="search-query span2" />
+        <button type="submit" class="btn btn-success" style="margin-top: 0px;">Search</button>
+      </form>
+
+      <ul class="nav pull-right">        
+        <%= render 'devise/menu/login_items' %>
+        <li class="divider-vertical"></li>
+        <%= render 'devise/menu/registration_items' %>
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div>
+</div><!-- /navbar-inner -->

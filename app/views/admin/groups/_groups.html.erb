@@ -14,7 +14,8 @@
         <td><%= i+1 %></td>
         <td><%= best_in_place group, :name , :path => [:admin,group]%></td>
         <td><%= group.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-        <td><%= link_to "Add Users" , users_admin_group_path(group) %></td>
+        <td><%= link_to "Add Users" , users_admin_group_path(group) %> | &nbsp;
+        <%= link_to "Add Permissions" , admin_group_permission_path(group) %></td>
       </tr>
     <% end %>
   </tbody>

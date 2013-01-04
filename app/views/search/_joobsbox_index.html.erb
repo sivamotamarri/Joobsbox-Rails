@@ -1,19 +1,31 @@
-<div class="inner">
-  <a href="#">Search : <%= params[:jobq] %></a>
+<div class="span8">
+<div class="page-header">
+  <h1>Search : <%= params[:jobq] %></h1>
 </div>
 
 <% if !@jobs.blank? %>
-<ul>
-  <% i =0  %>
-  <% @jobs.each do |job |%>
-  <% i = i+1 %>
-    <li <% if i%2 == 0 %> class="alternate"<% end%>  >
+<% i =0  %>
+  <table class="table table-bordered table-striped table-hover" style="font-size:16px;">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th colspan="3">Job at Company in Location</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @jobs.each do |job |%>
+       <% i = i+1 %>
+      <tr>
+        <td><%= i %></td>
+        <td colspan="3">
       <a href="<%=job_path(job)%>"><%= job.title %></a>
-      <span class="lighterSmall"> at </span><%= job.company %>
-      <span class="lighterSmall"> in </span><%= job.location %>
-    </li>
-  <% end %>
-</ul>
+      <span class="lighterSmall" style="color: #93E08B;"> at </span><%= job.company %>
+      <span class="lighterSmall" style="color: #93E08B;"> in </span><%= job.location %>
+      </td>
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
 <% else %>
 <div class="info">Nothing to be found for your searched criteria.</div>
 <ul>
@@ -22,3 +34,4 @@
   <li>Try similar words. If "designer" doesn\'t return anything, try "design".</li>
 </ul>
 <% end %>
+</div>

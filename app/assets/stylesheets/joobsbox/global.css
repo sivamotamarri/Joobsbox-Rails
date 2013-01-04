@@ -29,17 +29,32 @@ h2 {
 
 /************* ROUND **************************************/
 
-div.inner {
+/*div.inner {
 	margin: 0;
 	border:0;
 	zoom:1;
 	background-color: #E4F2FD;
+        
 	font-size: 20px;
 	color: #333333;
 	padding: 7px;
 	text-align: left;
 	font-weight: bold;
 	text-shadow: #888 0px 1px 3px;
+}*/
+
+div.inner {
+    background-color: #0F8790;
+    border: 0 none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #333333;
+    font-family: Lobster;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 7px;
+    text-align: left;
 }
 div.outer {
 	margin: 10px;
@@ -262,6 +277,7 @@ a:hover {
 	font-size:12px;
 	padding: 3px;
 	padding-left: 7px;
+        font-family: lobster;
 }
 .admin {
 	color: #8CC16C;

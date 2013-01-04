@@ -1,9 +1,32 @@
 <% if user_signed_in? %>
-  <li <% if params[:controller] == "devise/registrations" %> class ="active" <% end %> >
-  <%= link_to('Edit Profile', edit_user_registration_path) %>
+  <li class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%= current_user.name %> <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li <% if params[:controller] == "devise/registrations" %> class ="active" <% end %> >
+        <%= link_to('Edit Profile', edit_user_registration_path) %>
+      </li>
+      <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
+        <li><a href="#">My Resumes</a></li>
+      <% elsif (user_signed_in? && (current_user.has_role?(:employer) || current_user.has_role?(:admin))) %>
+        <li><a href="#">My Postings</a></li>
+      <% else %>
+        <li><a href="#">My Resumes</a></li>
+        <li><a href="#">My Postings</a></li>
+      <% end %>
+
+      <li class="divider"></li>
+      <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
+        <li><a href="/post">Post a Resume</a></li>
+      <% elsif (user_signed_in? && (current_user.has_role?(:employer) || current_user.has_role?(:admin))) %>
+        <li><a href="/publish">Post a Job</a></li>
+      <% else %>
+        <li><a href="/post">Post a Resume</a></li>
+        <li><a href="/publish">Post a Job</a></li>
+      <% end %>
+    </ul>
   </li>
 <% else %>
   <li>
-  <%= link_to('Register', new_user_registration_path)  %>
+    <%= link_to('Register', new_user_registration_path)  %>
   </li>
 <% end %>

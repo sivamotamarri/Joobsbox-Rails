@@ -17,6 +17,10 @@ $(document).ready(function() {
 	});
 
         alertInfo();
+
+        $('#sign_me').click(function(){
+          login();
+        });
 });
 
 function alertInfo() {
@@ -30,4 +34,44 @@ function hideFlashMessages() {
 
 function showFlashMessages() {
   $('.alert').slideDown(200);
+}
+
+function hideErrorMessages() {
+    $('.error').slideUp(200);
+    $('.error').html('');
+}
+
+function showErrorMessages() {
+  $('.error').slideDown(200);
+}
+
+
+function login() {
+
+var email = $('#user_email').val();
+
+var password = $('#user_password').val();
+
+var data = {remote: true, commit: "Sign in", user: {remember_me: 1, password: password, email: email}};
+
+$.post('/users/sign_in.json', data, function(resp) {
+
+if(resp.success) {
+  window.location = resp.redirect
+// process success case
+
+} else {
+$('.error').html(resp.errors)
+setTimeout(showErrorMessages, 500);
+setTimeout(hideErrorMessages, 2500);
+
+
+// let the user know they failed authentication
+
+}
+
+});
+
+return false;
+
 }

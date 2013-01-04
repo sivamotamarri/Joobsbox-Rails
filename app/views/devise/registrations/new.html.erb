@@ -1,24 +1,49 @@
 
-<br/>
-<div>
-
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <dl class="zend_form">
+<div class="span8">
+ 
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-horizontal well" , :style => "text-align:left;"}) do |f| %>
+ <fieldset>
+    <legend>Sign up </legend>
+    <hr/>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+    <div class="control-group">
     <%= f.input :name, :label_html => { :class => 'text-fields' }, :required => true, :autofocus => true %>
+    </div><div class="control-group">
     <%= f.input :email, :label_html => { :class => 'text-fields' }, :required => true %>
-    <%= f.input :password, :label_html => { :class => 'text-fields' }, :required => true %>
-    <%= f.input :password_confirmation, :label_html => { :class => 'text-fields' }, :required => true %>
-    <%= f.input :role_name, :label_html => { :class => 'text-fields' }, :collection =>  {"Employer" => "employer", "Jobseeker" => "jobseeker"}, :include_blank => false %>
-  </div>
+     </div><div class="control-group">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+  <%= f.input :password, :label_html => { :class => 'text-fields' }, :required => true %>
+    </div><div class="control-group">
+  <%= f.input :password_confirmation, :label_html => { :class => 'text-fields' }, :required => true %>
+     </div><div class="control-group">
+  <%= f.input :role_name, :label_html => { :class => 'text-fields' }, :collection =>  {"Employer" => "employer", "Jobseeker" => "jobseeker" , "Recruiter" => "recruiter"}, :include_blank => false %>
+  
+  
   </div>
+   
+      <div class="form-actions control-group">
+        <%= f.submit "Sign up" , :class => "btn btn-primary" %>
+      </div>
+ </fieldset>
 <% end %>
-
-<%= render "devise/shared/links" %>
-  </dl>
+  <div class="form-horizontal well"  style = "text-align:left;border-radius: 10px 10px 10px 10px;">
+    <fieldset>
+      <legend>Sign in </legend>
+    <%= render "devise/shared/links" %>
+    </fieldset>
+  </div>
 </div>
+
+<style type="text/css">
+  .error{
+    color: #B94A48;
+    margin-left: 10px;
+}
+input, textarea, .uneditable-input {
+    width: 247px;
+}
+select{
+  width: 260px;
+}
+</style>

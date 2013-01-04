@@ -4,11 +4,12 @@ JoobsboxRails::Application.routes.draw do
 
  
 
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => 'sessions'}
 
   namespace :admin do  
     match '' => 'home#index'
-    resources :categories, :postings, :settings , :themes , :plugins , :roles , :users 
+    resources :categories, :postings, :settings , :themes , :plugins , :roles , :users ,
+              :group_permissions 
     resources :groups do
       member do
         get "users"

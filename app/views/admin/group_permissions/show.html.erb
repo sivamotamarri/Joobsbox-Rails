@@ -1,0 +1,43 @@
+<h1 class="dashboard-title"><%= @group.name.camelize  %> Permissions </h1>
+<div class="roles-container">
+   <div id="toolbar">
+  		Actions: <a href="#group_permissions" data-toggle="modal" class="accept role_hook">Create Group Permissions</a>
+    </div>
+<table class="roles">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Module Name</th>
+      <th>Read</th>
+      <th>Write</th>
+      <th>Execute</th>
+      <th>Delete</th>
+      <th>Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @persmissions.each do |perm| %>
+
+    <tr>
+      <td><%= perm.group.name %></td>
+      <td><%= perm.joobs_model_name %></td>
+      <td><% if  perm.r == "read" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %>   </td>
+      <td><% if  perm.c == "create" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.u == "update" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.d == "delete" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.m == "manage" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= render 'form' %>
+<%= stylesheet_link_tag    "admin/groups/groups.css", :media => "screen" %>
+<%= stylesheet_link_tag    "admin/users/bootstrap.css", :media => "screen" %>
+
+<%= stylesheet_link_tag    "js/lib/jquery-ui/css/cupertino/jquery-ui-1.7.1.custom.css", :media => "screen" %>
+
+
+
+   <script src="http://code.jquery.com/jquery-latest.js"></script>
+<%= javascript_include_tag "admin/users/bootstrap.js" %>

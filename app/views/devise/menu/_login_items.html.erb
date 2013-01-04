@@ -3,7 +3,16 @@
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   </li>
 <% else %>
+
   <li>
-  <%= link_to('Login', new_user_session_path)  %>
+    <a href="#myModal" data-toggle="modal">Login</a>
+  <%#= link_to('Login', new_user_session_path)  %>
   </li>
+
+
+  
+
 <% end %>
+
+
+
