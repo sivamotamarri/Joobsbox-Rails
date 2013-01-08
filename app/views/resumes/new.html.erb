@@ -47,9 +47,9 @@
     <legend>Resume Details </legend>
     <hr/>
      <div class="control-group">
-    <%= f.input :resume_title, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => false %>
+    <%= f.input :resume_title, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => true %>
   </div> <div class="control-group">
-  <%= f.input :attachment, :as => :file, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => false %>
+  <%= f.input :attachment, :as => :file, :input_html => {:class => "controls"}, :label_html => {:class => "control-label"}, :required => true %>
   </div>
   </fieldset>
    <div class="control-group">

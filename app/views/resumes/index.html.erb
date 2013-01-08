@@ -1,8 +1,9 @@
-<h1>Resumes</h1>
-<table class="table table-hover">
+<div class="span8">
+  <div class="page-header"><h1>Resumes</h1></div>
+<table class="table table-bordered table-striped table-hover">
   <thead>
   <tr>
-    <th>SNo</th>
+    <th>#</th>
     <th>Skills</th>
     <th>Resume Title</th>
     <th>Resume</th>
@@ -12,16 +13,16 @@
   </thead>
   <tbody>
     <% @resumes.each_with_index do |rs,i| %>
-    <tr <% if rs.status %>  class="success" <% end %>  >
-      <td><%= rs.id  %></td>
+    <tr>
+      <td><%= i + 1  %></td>
       <td><%= rs.key_skills %></td>
       <td><%= rs.resume_title %></td>
       <td><%= link_to rs.filename , rs if !rs.attachment.blank? %></td>
       <td><%= rs.status ? "Active" : "Inactive" %></td>
-      <td><%= button_to  "Delete Resume", rs, :confirm => "Are you sure you want to delete this resume", :method => :delete if can? :destroy, rs %></td>
-
+      <td><%=  button_to  "Delete Resume", {:action => 'destroy' , :id =>rs.id},  :confirm => "Are you sure you want to delete this resume", :method => :delete if can? :destroy, rs %></td>
     </tr>
     <% end %>
   </tbody>
 
 </table>
+</div>

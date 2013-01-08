@@ -6,12 +6,12 @@
         <%= link_to('Edit Profile', edit_user_registration_path) %>
       </li>
       <% if (user_signed_in? && current_user.has_role?(:jobseeker)) %>
-        <li><a href="#">My Resumes</a></li>
+        <li><a href="<%= resumes_path %>">My Resumes</a></li>
       <% elsif (user_signed_in? && (current_user.has_role?(:employer) || current_user.has_role?(:admin))) %>
-        <li><a href="#">My Postings</a></li>
+        <li><a href="<%= my_postings_jobs_path %>">My Postings</a></li>
       <% else %>
-        <li><a href="#">My Resumes</a></li>
-        <li><a href="#">My Postings</a></li>
+        <li><a href="<%= resumes_path %>">My Resumes</a></li>
+        <li><a href="<%= my_postings_jobs_path %>">My Postings</a></li>
       <% end %>
 
       <li class="divider"></li>

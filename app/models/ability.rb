@@ -15,10 +15,12 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
-    elsif user.has_role? :employer
+    elsif user.has_role? :employer     
       can :manage, Job
+    elsif user.has_role? :jobseeker
+      can :manage, Resume
     else
-      can :read , Job
+      can :read , [Job,Resume]
     end
 
     can :destroy, [Resume], :user_id => user.id

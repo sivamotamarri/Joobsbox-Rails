@@ -7,7 +7,7 @@ class Resume < ActiveRecord::Base
 
   mount_uploader :attachment, AttachmentUploader
 
-  validates :nationality, :current_location,:gender,:user_id,
+  validates :nationality, :current_location,:gender,:user_id,:resume_title , :attachment,
                    :total_experience_yrs , :total_experience_mns , :current_industry ,
                    :key_skills, :presence => true
 

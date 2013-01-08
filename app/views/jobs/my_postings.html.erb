@@ -1,0 +1,31 @@
+
+  <div class="span8">
+    <div class="page-header">
+      <h1>My Postings</h1>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each_with_index do |job, i| %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%= link_to job.title , job_path(job) %></td>
+        <td><%= job.category.name %></td>
+        <td><%= job.company %></td>
+        <td><%= job.location %></td>
+        <td><%= job.is_approved ? 'Approved' : 'Pending' %></td>
+      </tr>
+      <% end %>      
+    </tbody>
+  </table>   
+  </div>
+

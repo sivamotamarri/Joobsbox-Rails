@@ -1,0 +1,43 @@
+<div class="span8">
+  <div class="page-header"><h1>Applied Profiles</h1></div>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Candidate</th>
+    <th>Skills</th>
+    <th>Resume Title</th>
+    <th>Resume</th>   
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @profiles.each_with_index do |rs,i| %>
+    <tr>
+      <td><%= i + 1  %></td>
+      <td><%= rs.user.name %></td>
+      <td><%= rs.key_skills %></td>
+      <td><%= rs.resume_title %></td>
+      <td><%= link_to rs.filename , rs if !rs.attachment.blank? %>    
+      <td><%=  link_to  "Contact", "#resumedetails#{rs.id}" , "data-toggle" => "modal" , :class => "btn btn-success"%></td>
+      <div id="resumedetails<%=rs.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Details</h3>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+            <p>Email : <strong><%=  rs.user.email %> </strong> </p>
+            <p> Mobile or Land line : <strong><%= rs.mobile_number || rs.landline   %> </strong></p>
+            <br/>
+          </div>
+          <div class="modal-footer form-actions" style ="background:none;">
+            <div class="btn" data-dismiss="modal" aria-hidden="true">Close</div>
+          </div>
+      </div></td> 
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+

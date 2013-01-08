@@ -1,9 +1,9 @@
 #formPublish					{width: 90%; margin-left: 15px;}
-#formPublish input 				{margin: 0; width: 75%; padding: 4px;}
+#formPublish .control-group input 				{margin: 0; width: 75%; padding: 4px;}
 #formPublish dt					{margin-top: 10px;}
 #formPublish dd					{padding: 0; margin: 0; margin-top: 5px; display: block;}
-#formPublish dt label				{font-family: Verdana,Arial,Helvetica,sans-serif; letter-spacing: 0.1px; font-size: 10pt;}
-#formPublish .description , #formPublish .hint 		{color: #999; font-size: 11px; padding: 2px;}
+
+#formPublish .description , #formPublish .hint 		{color: #F3C4A3; font-size: 13px; }
 
 #formPublish ul.errors			{list-style: none; margin: 2px; padding: 2px;}
 #formPublish ul.errors li			{color: #FF3030; font-size: 80%;}
@@ -16,9 +16,16 @@ div.outer						{width: 100%;}
 /* By programmer */
 
 #formPublish .lab					{margin-top: 10px;}
-#formPublish .fields				{ margin: 0; margin-top: 5px; display: block;}
-#formPublish label				{font-family: Verdana,Arial,Helvetica,sans-serif; letter-spacing: 0.1px; font-size: 10pt;}
+#formPublish .fields				{  margin: 5px 0 9px; display: block;}
+
 
 #formPublish .input 				{margin-top: 10px;}
+.error_notification {
+    color: #DF6E1E;
+    font-size: 19px;
+}
+.error{
+  color: #B94A48;
+}
 
 /* By programmer */

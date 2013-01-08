@@ -1,29 +1,40 @@
-<%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
-<div class="inner">Publish a job</div>
-<%= simple_form_for(@job , :html => {:id => "formPublish"}) do |f| %>
 
-  <dl class="zend_form">
-     <%= f.error_notification %>
-    
-    <div class="form-inputs">
-    <%= f.input :title,:input_html => {:class => "fields"},:hint => "Ex: &quot;Flash Designer&quot; or &quot;ASP.NET Programmer&quot;",:label =>"Job title", :label_html => { :class => 'text-fields' }, :required => true, :autofocus => true %>
-    <%= f.input :company, :input_html => {:class => "fields"},:label_html => { :class => 'text-fields' }, :required => true %>
 
-    <%= f.input :location ,:input_html => {:class => "fields"},:hint =>"Example: &quot;London, Paris, Berlin, New York&quot;", :label_html => { :class => 'text-fields' }, :required => true %>
-
-    <%= f.input :category_id ,:input_html => {:class => "fields"},  :collection =>  Category.all, :prompt => "Choose...",:label_html => { :class => 'text-fields' }, :required => true %>
-
-    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "24" , :cols => "80" ,:style => "width: 591px;"}, :label_html => { :class => 'text-fields' }, :required => true %>
-    
-    
-    <%= f.input :to_apply,:label => "Means of application" ,:hint =>"Ex: &quot;Send CV to email ...&quot; or &quot;Apply online at URL ...&quot;", :input_html => {:class => "fields"}, :label_html => { :class => 'text-fields' } , :required => true %>
-    <%= f.input :user_id,:as => :hidden , :input_html => {:value => current_user.id} %>
+<div class="span8">
+  <div class="page-header">
+    <h1>Publish a job</h1>
   </div>
-<dd id="submit-element">
-    <%= f.button :submit, "Add" %>
-</dd>
-</dl>
+  <%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
+   <fieldset> 
+<%= simple_form_for(@job , :html => {:id => "formPublish" , :class=>"form-horizontal well" , :style => "text-align:left;"}) do |f| %>
+ <%= f.error_notification %>
+ <div class="control-group" >
+    <%= f.input :title,:input_html => {:class => "fields"},:hint => "Ex: &quot;Flash Designer&quot; or &quot;ASP.NET Programmer&quot;",:label =>"Job title", :label_html => { :class => 'text-fields' }, :required => true, :autofocus => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :company, :input_html => {:class => "fields"},:label_html => { :class => 'text-fields' }, :required => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :location ,:input_html => {:class => "fields"},:hint =>"Example: &quot;London, Paris, Berlin, New York&quot;", :label_html => { :class => 'text-fields' }, :required => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :category_id ,:input_html => {:class => "fields"},  :collection =>  Category.all, :prompt => "Choose...",:label_html => { :class => 'text-fields' }, :required => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "15" , :cols => "80" ,:style => "width: 575px;"}, :label_html => { :class => 'text-fields' }, :required => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :to_apply,:label => "Means of application" ,:hint =>"Ex: &quot;Send CV to email ...&quot; or &quot;Apply online at URL ...&quot;", :input_html => {:class => "fields"}, :label_html => { :class => 'text-fields' } , :required => true %>
+ </div>
+ <div class="control-group" >
+  <%= f.input :user_id,:as => :hidden , :input_html => {:value => current_user.id} %>
+ </div>
+ <div class="form-actions">
+    <%= f.submit "Add", :class => "btn btn-primary btn-large" , :style => " margin-left: 281px;padding-left: 50px;padding-right: 50px;"  %>
+ </div>
 <% end %>
+</fieldset>
+</div>
 
 
 	

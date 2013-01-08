@@ -1,6 +1,9 @@
 class Job < ActiveRecord::Base
 
   belongs_to :category
+
+  has_many :applied_resumes
+  has_many :applied_users , :class_name => "Resume",   :foreign_key => "resume_id" , :through => :applied_resumes,:source => :resume
   
   attr_accessible :title,:description,:company,:category_id ,:user_id,:to_apply,:location ,
                   :is_approved ,:updated_by,:expiration_date , :status , :code_stamp

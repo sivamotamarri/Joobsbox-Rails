@@ -7,6 +7,7 @@ class ResumesController < ApplicationController
 
   def new
     @resume = Resume.new
+    authorize! :create, @resume, :message => 'Not authorized as an jobseeker.'
   end
 
   def create
@@ -39,4 +40,23 @@ class ResumesController < ApplicationController
     end
   end
 
+  def apply
+    @job = Job.find(params[:id])
+    @applied_resume = AppliedResume.new
+  end
+
+  def submit_profile
+    @job = Job.find(params[:applied_resume][:job_id])
+    @applied_resume = AppliedResume.new(params[:applied_resume])
+    @applied_resume.applied_date = Date.today
+    respond_to do |format|
+      if @applied_resume.save
+        format.html { redirect_to jobs_path, notice: 'The Resume has been Submitted.Thank you for submitting .' }
+        format.json { render json: @applied_resume, status: :created, location: @applied_resume }
+      else
+        format.html { render action: "apply" }
+        format.json { render json: @applied_resume.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

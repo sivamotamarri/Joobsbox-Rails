@@ -11,8 +11,8 @@ class JobsController < ApplicationController
   end
 
   def new
-    authorize! :new, @user, :message => 'Not authorized as an employer.'
     @job = Job.new
+    authorize! :create, @job, :message => 'Not authorized as an employer.'    
   end
 
   def create
@@ -53,4 +53,18 @@ class JobsController < ApplicationController
       format.rss { render :layout => false }
     end
   end
+
+  def applied_resumes
+    @job = Job.find(params[:id])
+    @profiles = @job.applied_users
+  end
+
+  def my_postings
+     @jobs = current_user.jobs
+    respond_to do |format|
+      format.html {}
+    end
+  end
+
+  
 end

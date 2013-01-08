@@ -1,0 +1,29 @@
+
+
+<div class="span8">
+  <div class="page-header">
+    <h1>Submit your profile</h1>
+  </div>
+  <%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
+   <fieldset>
+<%= simple_form_for(@applied_resume , :url => submit_profile_resumes_path, :html => {:id => "formPublish" , :class=>"form-horizontal well" , :style => "text-align:left;"}) do |f| %>
+ <%= f.error_notification %>
+ <div class="control-group" >
+    <%= f.input :resume_id ,:input_html => {:class => "fields"},  :collection =>  current_user.resumes.collect{ |u| [u.resume_title, u.id] }, :prompt => "Choose...",:label_html => { :class => 'text-fields' }, :required => true %>
+ </div>
+ <div class="control-group" >
+    <%= f.input :covering_letter, :input_html => {:class => "fields" , :rows => "15" , :cols => "80" ,:style => "width: 575px;"}, :label_html => { :class => 'text-fields' } %>
+ </div>
+ <div class="control-group" >
+  <%= f.input :job_id,:as => :hidden , :input_html => {:value => @job.id} %>
+ </div>
+ <div class="form-actions">
+    <%= f.submit "Apply", :class => "btn btn-primary btn-large" , :style => " margin-left: 281px;padding-left: 50px;padding-right: 50px;"  %>
+ </div>
+<% end %>
+</fieldset>
+</div>
+
+
+
+

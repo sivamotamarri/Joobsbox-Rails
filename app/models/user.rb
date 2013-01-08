@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups, :join_table => :users_groups
 
   has_many :resumes
+  has_many :jobs
+
+  has_many :applied_resumes
+  has_many :applied_jobs , :class_name => "Job",   :foreign_key => "job_id" , :through => :applied_resumes ,:source => :job
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

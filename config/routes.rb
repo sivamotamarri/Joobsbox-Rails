@@ -23,8 +23,22 @@ JoobsboxRails::Application.routes.draw do
   match 'publish' => 'jobs#new'
   match 'post' => 'resumes#new'
   match 'search' => 'search#index'
-  resources :jobs
-  resources :resumes
+  resources :jobs do
+    member do
+       get 'applied_resumes'
+    end
+    collection do
+      get 'my_postings'     
+    end
+  end
+  resources :resumes do
+    member do
+      get 'apply'
+    end
+    collection do
+      post 'submit_profile'
+    end
+  end
   resources :categories
 
 
