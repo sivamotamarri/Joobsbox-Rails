@@ -47,6 +47,17 @@ class Resume < ActiveRecord::Base
 
   before_save :update_attachment_attributes
 
+   searchable do
+    text :resume_title , :key_skills    
+    time    :created_at
+
+    attachment :document_attachment
+  end
+
+  
+  def document_attachment
+	    "#{Rails.root}/public/#{attachment.url}"
+  end
   private
 
   def update_attachment_attributes

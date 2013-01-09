@@ -15,10 +15,13 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
-    elsif user.has_role? :employer     
+    elsif user.has_role?(:employer) 
+      puts "ssdsdf"
       can :manage, Job
-    elsif user.has_role? :jobseeker
+    elsif user.has_role?(:jobseeker) 
       can :manage, Resume
+    elsif user.has_role?(:recruiter)
+      can :manage, [Job,Resume]
     else
       can :read , [Job,Resume]
     end
