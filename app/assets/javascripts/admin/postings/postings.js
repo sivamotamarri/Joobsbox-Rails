@@ -97,7 +97,7 @@ $(function() {
 	$(".expand").click(function(ev) {
 		expandJob($(this));
 		
-		$(ev).preventDefault();
+		ev.preventDefault();
 	});
 	
 	// Keyboard interaction
