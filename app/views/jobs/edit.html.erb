@@ -1,30 +1,44 @@
-<%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
-<div class="inner">Publish a job</div>
-<%= simple_form_for(@job , :html => {:id => "formPublish"}) do |f| %>
 
-  <dl class="zend_form">
+<div class="span8">
+  <div class="page-header">
+    <h1>Publish a job</h1>
+  </div>
+<%= stylesheet_link_tag    "joobsbox/publishForm.css", :media => "all" %>
+<fieldset>
+<%= simple_form_for(@job , :html =>  {:id => "formPublish" , :class=>"form-horizontal well" , :style => "text-align:left;"}) do |f| %>
+
+  
      <%= f.error_notification %>
 
-    <div class="form-inputs">
+    <div class="control-group" >
     <%= f.input :title,:input_html => {:class => "fields"},:hint => "Ex: &quot;Flash Designer&quot; or &quot;ASP.NET Programmer&quot;",:label =>"Job title", :label_html => { :class => 'text-fields' }, :required => true, :autofocus => true %>
-    <%= f.input :company, :input_html => {:class => "fields"},:label_html => { :class => 'text-fields' }, :required => true %>
-
+  </div>
+    <div class="control-group" >
+  <%= f.input :company, :input_html => {:class => "fields"},:label_html => { :class => 'text-fields' }, :required => true %>
+</div>
+    <div class="control-group" >
     <%= f.input :location ,:input_html => {:class => "fields"},:hint =>"Example: &quot;London, Paris, Berlin, New York&quot;", :label_html => { :class => 'text-fields' }, :required => true %>
-
+</div>
+    <div class="control-group" >
     <%= f.input :category_id ,:input_html => {:class => "fields"},  :collection =>  Category.all, :prompt => "Choose...",:label_html => { :class => 'text-fields' }, :required => true %>
-
-    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "24" , :cols => "80"}, :label_html => { :class => 'text-fields' }, :required => true %>
-
+</div>
+    <div class="control-group" >
+    <%= f.input :description, :label => "Job description" ,:hint =>"HTML code is not accepted. Length must be less than 4000 characters.", :input_html => {:class => "fields" , :rows => "15" , :cols => "80" ,:style => "width: 575px;"}, :label_html => { :class => 'text-fields' }, :required => true %>
+</div>
+    <div class="control-group" >
 
     <%= f.input :to_apply,:label => "Means of application" ,:hint =>"Ex: &quot;Send CV to email ...&quot; or &quot;Apply online at URL ...&quot;", :input_html => {:class => "fields"}, :label_html => { :class => 'text-fields' } , :required => true %>
-    <% if  current_user.has_role?(:admin) %>
+    </div>
+  <% if  current_user.has_role?(:admin) %>
+    <div class="control-group" >
      <%= f.input :expiration_date ,:as => :string,:input_html => {:class => "fields"} , :label => "Expiration date" , :required => true %>
-    <% end %>
-  </div>
-<dd id="submit-element">
-    <%= f.button :submit, "Update" %>
-</dd>
-</dl>
+    </div>
+  <% end %>
+  
+<div class="form-actions">
+    <%= f.submit "Update" , :class => "btn btn-primary btn-large" %>
+</div>
+
 <% end %>
 
 <% if  current_user.has_role?(:admin) %>
@@ -41,7 +55,7 @@
       </script>
 <% end %>
 
-
-
+</fieldset>
+</div>
 
 
