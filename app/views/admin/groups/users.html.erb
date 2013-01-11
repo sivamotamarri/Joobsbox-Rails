@@ -10,16 +10,18 @@
           <th><input id="selectAllUsers" type="checkbox"/></th>
           <th>Name</th>
           <th>Email</th>
+          <th>Role</th>
           <th>Joined at</th>
         </tr>
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <% if !user.has_role?(:admin) %>
+          <% if user.has_role?(:recruiter) %>
           <tr id="user_<%= user.id %>" class="job">
             <td><input name="user[]" type="checkbox" value="<%= user.id %>"/></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
+            <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
             <td><%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
           </tr>
           <% end %>
@@ -46,7 +48,8 @@
           <tr>
            <th></th>
            <th>Name</th>
-          <th>Email</th>
+           <th>Email</th>
+           <th>Role</th>
           <th>Joined at</th>
           </tr>
         </thead>
@@ -56,6 +59,7 @@
             <td><input name="user[]" type="checkbox" value="<%= user.id %>"/></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>
+            <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
             <td><%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
           </tr>
           <% end %>

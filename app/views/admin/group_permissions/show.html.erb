@@ -21,10 +21,10 @@
     <tr>
       <td><%= perm.group.name %></td>
       <td><%= perm.joobs_model_name %></td>
-      <td><% if  perm.r == "read" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %>   </td>
-      <td><% if  perm.c == "create" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
-      <td><% if  perm.u == "update" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
-      <td><% if  perm.d == "delete" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.r == "read" || perm.m == "manage" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %>   </td>
+      <td><% if  perm.c == "create" || perm.m == "manage" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.u == "update" || perm.m == "manage" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
+      <td><% if  perm.d == "delete" || perm.m == "manage"  %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
       <td><% if  perm.m == "manage" %> <span class="icon-ok"></span><%  else %> <span class="icon-remove"></span> <% end %> </td>
     </tr>
     <% end %>
