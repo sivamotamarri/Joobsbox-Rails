@@ -15,8 +15,7 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
-    elsif user.has_role?(:employer) 
-      puts "ssdsdf"
+    elsif user.has_role?(:employer)      
       can :manage, Job
     elsif user.has_role?(:jobseeker) 
       can :manage, Resume
@@ -27,6 +26,31 @@ class Ability
     end
 
     can :destroy, [Resume], :user_id => user.id
+
+#    Group.all.each do |grp|
+#      grp.permissions.each do |perm|
+#        if perm.group.users.include?(user)
+#          if perm.m == "manage"
+#            if perm.joobs_model_name == "Job"
+#              can :manage , Job
+#            else
+#              can :manage , Resume
+#            end
+#          else
+#            s = []
+#            s.push(:read) if perm.r != "read"
+#            s.push(:create) if perm.c != "create"
+#            s.push(:update) if perm.u != "update"
+#            s.push(:delete) if perm.d != "delete"
+#            if perm.joobs_model_name == "Job"
+#              cannot s ,  Job , :user_id => user.id
+#            else
+#              cannot s ,  Resume , :user_id => user.id
+#            end
+#          end
+#        end
+#      end
+#    end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

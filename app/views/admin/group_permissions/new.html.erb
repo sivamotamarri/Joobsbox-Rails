@@ -15,48 +15,7 @@
          <%= render(:partial => "permissions" , :locals => {:f => f}) %>
          <%= f.input :limited , :as => :hidden , :input_html => {:value => ""} %>
       </div>
-        <script type="text/javascript">
-          $(function(){
-            $('#permission_m_manage').click(function(){
-              if($(this).attr("checked")) {
-                $(".perms input[type=checkbox]").attr("checked", false);
-                $('#permission_limited').val('');
-                $('.perms').hide();
-              }
-            });
-             $('#permission_m_').click(function(){
-               if($(this).attr("checked")){
-                  $('.perms').show();
-                }
-             });
-
-               if($('#permission_m_').attr("checked")){
-                  $('.perms').show();
-                }
-
-             $(".perms input[type=checkbox]").click(function(){
-               if($(this).attr("checked")){
-                 $('.error').hide();
-                  $('#permission_limited').val('1');
-               }
-             });
-
-
-          });
-
-          function validate(){
-            if($("#permission_m_manage").attr("checked")){
-              return true
-            }else{
-              if($(".perms input:checkbox:checked").length > 0){
-                return true;
-              }else{
-                $('.error').show();
-                return false;
-              }
-            }
-          }
-        </script>
+        
       </div>
       </div>
     <div class="modal-footer">

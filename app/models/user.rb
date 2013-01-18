@@ -36,4 +36,47 @@ class User < ActiveRecord::Base
     groups.where(:name => group_name).size > 0
   end
 
+  def can_create?(groups,model_name)
+    perm = groups.first.permissions.find_by_joobs_model_name(model_name)
+      if perm
+        if perm.m.blank?
+          if perm.c.blank?
+           raise CanCan::AccessDenied, "Not authorized to create a #{model_name}."
+          end
+        end
+      end
+  end
+
+  def can_delete?(groups,model_name)
+    perm = groups.first.permissions.find_by_joobs_model_name(model_name)
+      if perm
+        if perm.m.blank?
+          if perm.d.blank?
+           raise CanCan::AccessDenied, "Not authorized to delete a #{model_name}."
+          end
+        end
+      end
+  end
+
+  def can_update?(groups,model_name)
+      perm = groups.first.permissions.find_by_joobs_model_name(model_name)
+      if perm
+        if perm.m.blank?
+          if perm.u.blank?
+           raise CanCan::AccessDenied, "Not authorized to update a #{model_name}."
+          end
+        end
+      end
+  end
+
+  def can_read?(groups,model_name)
+     perm = groups.first.permissions.find_by_joobs_model_name(model_name)
+      if perm
+        if perm.m.blank?
+          if perm.r.blank?
+           raise CanCan::AccessDenied, "Not authorized to read a #{model_name}."
+          end
+        end
+      end
+  end
 end

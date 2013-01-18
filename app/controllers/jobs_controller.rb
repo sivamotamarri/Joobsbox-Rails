@@ -12,7 +12,12 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    authorize! :create, @job, :message => 'Not authorized as an employer.'    
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_create?(groups,"Job")
+    else
+     authorize! :create, @job, :message => 'Not authorized as an employer.'
+    end
   end
 
   def create
@@ -30,6 +35,12 @@ class JobsController < ApplicationController
 
   def edit
     @job = Job.find(params[:id])
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_update?(groups,"Job")
+    else
+       authorize! :update, @job, :message => 'Not authorized as an employer.'
+    end
   end
 
   def update
@@ -48,6 +59,12 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_read?(groups,"Job")
+    else
+       authorize! :read, @job, :message => 'Not authorized as an employer.'
+    end
     respond_to do |format|
       format.html {}
       format.rss { render :layout => false }

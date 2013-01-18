@@ -7,7 +7,12 @@ class ResumesController < ApplicationController
 
   def new
     @resume = Resume.new
-    authorize! :create, @resume, :message => 'Not authorized as an jobseeker.'
+    groups = current_user.groups    
+    if !groups.blank?
+      current_user.can_create?(groups,"Resume")
+    else
+      authorize! :create, @resume, :message => 'Not authorized as an jobseeker.'
+    end    
   end
 
   def create
@@ -25,6 +30,15 @@ class ResumesController < ApplicationController
 
   def show
     @resume = Resume.find(params[:id])
+
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_read?(groups,"Resume")
+    else
+      authorize! :read, @resume, :message => 'Not authorized as an jobseeker.'
+    end
+
+
     send_file "#{Rails.root}/public#{@resume.attachment.url}",
             :filename => @resume.filename ,
             :type => @resume.content_type,
@@ -34,6 +48,13 @@ class ResumesController < ApplicationController
 
   def destroy
     @resume = current_user.resumes.find(params[:id])
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_delete?(groups,"Resume")
+    else
+      authorize! :destroy, @resume, :message => 'Not authorized as an jobseeker.'
+    end
+
     if @resume.destroy
       flash[:notice] = "Resume was deleted."
       redirect_to resumes_url
