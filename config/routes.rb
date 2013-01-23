@@ -34,6 +34,7 @@ JoobsboxRails::Application.routes.draw do
   resources :resumes do
     member do
       get 'apply'
+      get 'download'
     end
     collection do
       post 'submit_profile'

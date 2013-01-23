@@ -8,7 +8,7 @@
     <th>Resume Title</th>
     <th>Resume</th>
     <th>Status</th>
-    <th>Action</th>
+    <th colspan="2" style="text-align: center;">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -19,7 +19,10 @@
       <td><%= rs.resume_title %></td>
       <td><%= link_to rs.filename , rs if !rs.attachment.blank? %></td>
       <td><%= rs.status ? "Active" : "Inactive" %></td>
-      <td><%=  button_to  "Delete Resume", {:action => 'destroy' , :id =>rs.id},  :confirm => "Are you sure you want to delete this resume", :method => :delete if can? :destroy, rs %></td>
+      <td><%= link_to 'Download' , download_resume_path(rs) , :class => "btn btn-success " if !rs.attachment.blank? %> </td>
+      <td>
+        <%=  button_to  "Delete", {:action => 'destroy' , :id =>rs.id},  :confirm => "Are you sure you want to delete this resume", :method => :delete , :class => "btn btn-danger" if can? :destroy, rs %>
+      </td>
     </tr>
     <% end %>
   </tbody>

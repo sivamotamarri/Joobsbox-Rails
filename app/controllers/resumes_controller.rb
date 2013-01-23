@@ -29,22 +29,53 @@ class ResumesController < ApplicationController
   end
 
   def show
+  
+    require 'yomu'
+    
     @resume = Resume.find(params[:id])
-
+    if @resume.user != current_user
     groups = current_user.groups
     if !groups.blank?
       current_user.can_read?(groups,"Resume")
     else
       authorize! :read, @resume, :message => 'Not authorized as an jobseeker.'
     end
+    end
 
+ 
+   
+
+    yomu = Yomu.new("#{Rails.root}/public#{@resume.attachment.url}")
+
+    @doc2 = yomu.text
+
+    
+   
+    #render :file => "#{Rails.root}/public#{@resume.attachment.url}", :content_type =>  @resume.content_type
+
+#    send_file "#{Rails.root}/public#{@resume.attachment.url}",
+#            :filename => @resume.filename ,
+#            :type => @resume.content_type,
+#            :disposition => 'attachment'
+  end
+
+
+  def download
+    @resume = Resume.find(params[:id])
+    if @resume.user != current_user
+    groups = current_user.groups
+    if !groups.blank?
+      current_user.can_read?(groups,"Resume")
+    else
+      authorize! :read, @resume, :message => 'Not authorized as an jobseeker.'
+    end
+    end
 
     send_file "#{Rails.root}/public#{@resume.attachment.url}",
             :filename => @resume.filename ,
             :type => @resume.content_type,
-            :disposition => 'attachment'
+           :disposition => 'attachment'
   end
-
 
   def destroy
     @resume = current_user.resumes.find(params[:id])
