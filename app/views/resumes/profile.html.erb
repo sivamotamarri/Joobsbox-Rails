@@ -1,0 +1,45 @@
+<div class="span8">
+<div class="page-header">
+  <h1><%= @resume.user.name %></h1>
+</div>
+  <table class="table table-bordered table-striped table-hover" style="font-size:16px;">
+    <thead>
+      <tr>
+        <th>Resume Headline</th>
+        <th colspan="3"><%= @resume.resume_title  %> </th>
+      </tr>
+    </thead>
+    <tbody>    
+      <tr>
+        <td>Industry</td>
+        <td colspan="3"><%=@resume.current_industry %></td>
+      </tr>
+      <tr>
+        <td>Experience</td>
+        <td colspan="3"><%= @resume.total_experience_yrs %> Year(s) <%= @resume.total_experience_mns %> Month (s)</td>
+      </tr>
+      <tr>
+        <td>Location</td>
+        <td colspan="3"><%=@resume.current_location %></td>
+      </tr>
+       <tr>
+        <td>Key Skills</td>
+        <td colspan="3"><%=@resume.key_skills %></td>
+      </tr>
+       <tr>
+        <td>Resume</td>
+        <td colspan="3"><%= link_to 'Download' , download_resume_path(@resume) , :class => "btn btn-success " %> </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="page-header">
+  <h2>Recruiters will reach you at </h2>
+  </div>
+  <div class="well">
+    <i class="icon-envelope"></i> <%=  @resume.user.email %>
+    <i class="icon-bell"></i> <%=  @resume.mobile_number || @resume.landline %>
+  </div>
+</div>
+
+
+

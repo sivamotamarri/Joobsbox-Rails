@@ -175,6 +175,8 @@ joobsbox/button-search.gif: joobsbox/button-search-d10678918066ec9262e9538b43c15
 joobsbox/button-search/index.gif: joobsbox/button-search-d10678918066ec9262e9538b43c15ad9.gif
 joobsbox/dotted.gif: joobsbox/dotted-b7148581978685c3d5b15b002414cbd1.gif
 joobsbox/dotted/index.gif: joobsbox/dotted-b7148581978685c3d5b15b002414cbd1.gif
+joobsbox/glyphicons-halflings.png: joobsbox/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
+joobsbox/glyphicons-halflings/index.png: joobsbox/glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png
 joobsbox/header.gif: joobsbox/header-ab62a00247450242965129fa7bf984e6.gif
 joobsbox/header/index.gif: joobsbox/header-ab62a00247450242965129fa7bf984e6.gif
 joobsbox/ico-clock.gif: joobsbox/ico-clock-3a09e7c5cc932f6ca5d02a31ef96f067.gif
@@ -473,8 +475,8 @@ default/publishForm.css: default/publishForm-abd3776763b75f1ff80eae7689e17fff.cs
 default/publishForm/index.css: default/publishForm-abd3776763b75f1ff80eae7689e17fff.css
 joobsbox/admin.css: joobsbox/admin-a5554bc9c82853de71149ac0b287be36.css
 joobsbox/admin/index.css: joobsbox/admin-a5554bc9c82853de71149ac0b287be36.css
-joobsbox/bootstrap.css: joobsbox/bootstrap-0a26eed1cf454f41453e1d97d52d26c8.css
-joobsbox/bootstrap/index.css: joobsbox/bootstrap-0a26eed1cf454f41453e1d97d52d26c8.css
+joobsbox/bootstrap.css: joobsbox/bootstrap-e24dc102cbae6aa656cca3128a000f59.css
+joobsbox/bootstrap/index.css: joobsbox/bootstrap-e24dc102cbae6aa656cca3128a000f59.css
 joobsbox/edit.css: joobsbox/edit-4cdb927586626ac64aa32c5fe5658a36.css
 joobsbox/edit/index.css: joobsbox/edit-4cdb927586626ac64aa32c5fe5658a36.css
 joobsbox/global.css: joobsbox/global-b61b72767a331cf547a2663f5abb1f65.css

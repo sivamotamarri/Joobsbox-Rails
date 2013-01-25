@@ -50,7 +50,7 @@ class Resume < ActiveRecord::Base
    searchable do
     text :resume_title , :key_skills    
     time    :created_at
-
+    integer :user_id
     attachment :document_attachment
   end
 

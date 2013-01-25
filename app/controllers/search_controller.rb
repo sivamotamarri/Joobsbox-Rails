@@ -12,4 +12,17 @@ class SearchController < ApplicationController
     end  
     @jobs = @jobs.results
   end
+
+
+
+  def search
+      @resumes = Resume.search do
+      keywords params[:resumeq]
+      without(:user_id, current_user.id)
+      order_by :created_at, :desc
+      paginate :page => params[:page] || 1, :per_page => 15
+
+    end
+    @resumes = @resumes.results
+  end
 end

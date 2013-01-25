@@ -2,11 +2,19 @@
   <h1>Your, career!</h1>
   <p>This is the most flexible open source job board application.</p>
   <!--<p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p> -->
-  <p>
-      <form action="/search" method="get" class="navbar-search pull-right" style="float:none;">
+  <p>   
+
+       <form action="/search" method="get" class="navbar-search pull-right" style="float:none;">
         <input name="jobq" type="text" id="searchInput" placeholder="Search for job" style="width: 444px;" class="search-query span2" />
         <button type="submit" class="btn btn-success" style="margin-top: 0px;">Search</button>
       </form>
+
+    <% if  (user_signed_in? && (current_user.has_role?(:recruiter) || current_user.has_role?(:employer) || current_user.has_role?(:admin))) %>
+       <form action="/profiles" method="get" class="navbar-search pull-right" style="float:none;">
+        <input name="resumeq" type="text" id="searchInput" placeholder="Search for profile" style="width: 444px;" class="search-query span2" />
+        <button type="submit" class="btn btn-success" style="margin-top: 0px;">Search</button>
+      </form>
+  <% end %>
 </p>
 </div>
 <!-- Main hero unit for a primary marketing message or call to action -->

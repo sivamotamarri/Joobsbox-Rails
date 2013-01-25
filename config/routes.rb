@@ -23,6 +23,8 @@ JoobsboxRails::Application.routes.draw do
   match 'publish' => 'jobs#new'
   match 'post' => 'resumes#new'
   match 'search' => 'search#index'
+  match 'profiles' => 'search#search'
+  match ':user_id/profile/:id' => 'resumes#profile' , :as => :profile
   resources :jobs do
     member do
        get 'applied_resumes'

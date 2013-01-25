@@ -1,0 +1,33 @@
+<div class="span8">
+<div class="page-header">
+  <h1>Search : <%= params[:resumeq] %></h1>
+</div>
+
+<% if !@resumes.blank? %>
+<% i =0  %>
+  <table class="table table-bordered table-striped table-hover" style="font-size:16px;">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th colspan="3">Profiles</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @resumes.each do |prof |%>
+       <% i = i+1 %>
+      <tr>
+        <td><%= i %></td>
+        <td colspan="3"><a href="<%= profile_path(prof.user,prof) %>"><%= prof.resume_title %></a></td>
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% else %>
+<div class="info">Nothing to be found for your searched criteria.</div>
+<ul>
+  <li>Look for typos in the searched word(s) and, if found, correct them.</li>
+  <li>Be less specific. Try "web designer" instead of "senior web designer".</li>
+  <li>Try similar words. If "designer" doesn\'t return anything, try "design".</li>
+</ul>
+<% end %>
+</div>

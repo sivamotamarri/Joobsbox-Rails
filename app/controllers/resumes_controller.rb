@@ -111,4 +111,8 @@ class ResumesController < ApplicationController
       end
     end
   end
+
+  def profile
+    @resume = Resume.find(params[:id])
+  end
 end
