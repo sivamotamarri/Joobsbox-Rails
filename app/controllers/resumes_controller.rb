@@ -30,7 +30,7 @@ class ResumesController < ApplicationController
 
   def show
   
-    require 'yomu'
+    #require 'yomu'
     
     @resume = Resume.find(params[:id])
     if @resume.user != current_user

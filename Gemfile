@@ -75,7 +75,7 @@ gem "heroku"
 #gem 'msworddoc-extractor', :git =>  'git://github.com/dayflower/msworddoc-extractor.git'
 
 
-gem 'yomu', :git =>  'git@github.com:Erol/yomu.git'
+#gem 'yomu', :git =>  'git@github.com:Erol/yomu.git'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
