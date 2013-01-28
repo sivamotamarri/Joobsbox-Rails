@@ -47,12 +47,12 @@ class Resume < ActiveRecord::Base
 
   before_save :update_attachment_attributes
 
-   searchable do
-    text :resume_title , :key_skills    
-    time    :created_at
-    integer :user_id
-    attachment :document_attachment
-  end
+#   searchable do
+#    text :resume_title , :key_skills
+#    time    :created_at
+#    integer :user_id
+#    attachment :document_attachment
+#  end
 
   
   def document_attachment
