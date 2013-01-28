@@ -62,14 +62,14 @@ end
 gem 'carrierwave'
 
 
-#
-#group :production do
-#  gem 'thin'
-#  gem "pg"
-#  gem "activerecord-postgresql-adapter"
-#end
-#
-#gem "heroku"
+
+group :production do
+  gem 'thin'
+  gem "pg"
+  gem "activerecord-postgresql-adapter"
+end
+
+gem "heroku"
 
 
 #gem 'msworddoc-extractor', :git =>  'git://github.com/dayflower/msworddoc-extractor.git'

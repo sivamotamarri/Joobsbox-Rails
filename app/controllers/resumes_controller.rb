@@ -43,11 +43,11 @@ class ResumesController < ApplicationController
     end
 
  
-   
+   @path = "#{@resume.attachment.url}"
 
-    yomu = Yomu.new("#{Rails.root}/public#{@resume.attachment.url}")
-
-    @doc2 = yomu.text
+#    yomu = Yomu.new("#{Rails.root}/public#{@resume.attachment.url}")
+#
+#    @doc2 = yomu.text
 
     
    
