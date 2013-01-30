@@ -28,6 +28,24 @@ class ResumesController < ApplicationController
     end
   end
 
+
+  def edit
+    @resume = Resume.find(params[:id])
+  end
+
+  def update
+    @resume = Resume.find(params[:id])
+    respond_to do |format|
+      if @resume.update_attributes(params[:resume])
+        format.html { redirect_to @resume, notice: 'The Resume has been Updated Successfully .' }
+        format.json { render json: @resume, status: :created, location: @resume }
+      else
+        format.html { render action: "update" }
+        format.json { render json: @resume.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def show
   
     #require 'yomu'

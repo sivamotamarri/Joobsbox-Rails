@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def load_theme    
-    session[:theme] = Theme.current_theme.first.name  if session[:theme] && session[:theme].blank?
+  def load_theme
+    session[:theme] = Theme.current_theme.first.name
   end
+  
   def layout_by_resource
     if devise_controller?
       "devise_layout"
