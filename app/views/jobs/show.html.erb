@@ -12,9 +12,9 @@
    <h2>To apply:</h2>
    <%= @job.to_apply %>
 </div>
-<% if current_user.has_role? :employer  %>
+<% if user_signed_in? && current_user.has_role?(:employer)  %>
  <a class="btn btn-success btn-small" href="<%= applied_resumes_job_path(@job) %>"> List of Applied Profiles </a>
-<% elsif current_user.has_role? :jobseeker %>
+<% elsif  user_signed_in? && current_user.has_role?(:jobseeker) %>
  <a class="btn btn-success btn-small" href="<%= apply_resume_path(@job) %>"> Apply </a>
 <% end %>
 </div>

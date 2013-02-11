@@ -71,6 +71,7 @@ end
 
 gem "heroku"
 
+gem "paperclip", "~> 3.0"
 
 #gem 'msworddoc-extractor', :git =>  'git://github.com/dayflower/msworddoc-extractor.git'
 

@@ -1,0 +1,12 @@
+<div class="span8">
+<% for image in @google_images %>
+<div style ="width:148px; height: 120px;float:left;">
+ <%= link_to(image_tag(image.thumbnail, :style => 'padding:3px; border:solid 1px #EEE; margin:2px; width:100px; height:100px;float:left'), image.original) %>
+  <span><%= image.width %>x<%= image.height %></span>
+</div>
+<% end %>
+<%#= clear %>
+<%= link_to_unless (params[:start] == 0), 'Prev',  { :start => (params[:start] - 8) , :keywords => params[:keywords] } %> |
+<%= link_to_unless (params[:start] > 0 && @google_images.blank?), 'Next', { :start => (params[:start] + 8) ,  :keywords => params[:keywords] } %>
+
+</div>

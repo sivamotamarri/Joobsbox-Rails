@@ -59,11 +59,13 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    if user_signed_in?
     groups = current_user.groups
     if !groups.blank?
       current_user.can_read?(groups,"Job")
     else
        authorize! :read, @job, :message => 'Not authorized as an employer.'
+    end
     end
     respond_to do |format|
       format.html {}
